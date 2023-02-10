@@ -31,6 +31,7 @@ pre-commit has been configured with the following tools:
 - autoflake: Removes unused imports and variables
 - isort: Sorts imports alphabetically by import type
 - black: Formats code according to the PEP 8 standard. Will prevent the linters below from reporting nit-picky things, and save you from having to think about such nit-picky things.
+- vulture: Checks for dead code.
 - pylint: A proper static code analyzer.
 - mypy: Static type checking. Example warning: "Returning None from function declared to return str"
 - flake8: Also performs static code analysis (this time with pyflakes), checks compliance with the PEP 8 style guide (using pycodestyle), performs complexity analysis (with McCabe).
