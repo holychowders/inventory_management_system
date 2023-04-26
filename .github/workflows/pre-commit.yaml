@@ -2,7 +2,7 @@ name: pre-commit
 
 on:
   push:
-    branches: '*'
+    branches: '**'
 
 jobs:
   pre-commit-ubuntu-latest:
