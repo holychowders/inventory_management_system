@@ -3,7 +3,7 @@
 - **University**: University of North Dakota
 - **Course**: CSCI 455: Database Management Systems
 - **Semester**: Spring 2023
-- **Project**: Inventory management system
+- **Project**: Inventory Management System
 - **Group Members**: Daniel De Jesus, Alycia Sloan, Austin Garcia
 
 ## Static Code Analysis with pre-commit
