@@ -10,7 +10,7 @@
 
 ### Running Locally
 
-pre-commit can be run locally during development to automate formatting, detection of errors and bugs, and to enforce general code quality standards. If you decide to install the pre-commit hooks in your local repo, it will run every time you attempt to commit. If a check fails, you will have to resolve any warnings emitted or commit with `--no-verify` to ignore them.
+pre-commit can be run locally during development to automate formatting, detection of errors and bugs, and to enforce general code quality standards. If you decide to install the pre-commit hooks in your local repo, it will run every time you attempt to commit. If a check fails, you will have to resolve any warnings emitted or commit with `--no-verify` or `-n` to ignore them.
 
 pre-commit can also be run manually even if you haven't installed the hooks into your local repo.
 
@@ -58,7 +58,7 @@ For smaller changes, just commit normally, resolving any warnings that come up. 
 If the hooks were installed in your repo (`pre-commit install`), pre-commit will run automatically when you run `git commit`.
 
 - If warnings are emitted, you will have to resolve them before you attempt to commit again.
-- To bypass this (for example, if you want to save all changes and/or warnings for a dedicated commit before you push), you can add the `--no-verify` flag to your `git commit` command.
+- To bypass this (for example, if you want to save all changes and/or warnings for a dedicated commit before you push), you can add the `--no-verify` or `-n` flag to your `git commit` command.
 
 Whether or not you installed the hooks into your repo, you can still run pre-commit whenever you like using the following commands:
 - `pre-commit` runs pre-commit only on **staged** changes.
