@@ -1,7 +1,14 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 fail_fast: false
+
 repos:
+-   repo: https://github.com/sqlfluff/sqlfluff
+    rev: 2.0.7
+    hooks:
+    #-   id: sqlfluff-lint
+    -   id: sqlfluff-fix
+
 -   repo: https://github.com/asottile/pyupgrade
     rev: v3.3.1
     hooks:
@@ -45,7 +52,6 @@ repos:
     -   id: flake8
         additional_dependencies: [flake8-bugbear]
         fail_fast: true
-
 
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
