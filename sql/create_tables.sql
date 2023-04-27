@@ -37,8 +37,8 @@ CREATE TABLE supplier (
 
 CREATE TABLE customer (
     id INTEGER PRIMARY KEY,
-    firstname TEXT NOT NULL,
-    lastname TEXT NOT NULL,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
     address_id INTEGER NOT NULL,
     phone TEXT NOT NULL,
     FOREIGN KEY (address_id) REFERENCES address (id)
