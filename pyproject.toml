@@ -6,6 +6,7 @@ disable = [
     "C0116", # (missing-function-docstring)
     "W0511", # (fixme)
 ]
+good-names="db"
 
 [tool.vulture]
 paths = ["src"]
