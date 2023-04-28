@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Login - Inventory Management System</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+  </head>
+  <body>
+    <form id="login-form" method="post" action="/login/" novalidate="">
+      <div class="login-form-label">
+        <label>Employee Login</label>
+      </div>
+      <div class="login-form">
+        <label for="employee-id">ID</label>
+        <input
+          id="employee-id"
+          name="employee-id"
+          type="text"
+          placeholder="Employee ID"
+          value=""
+          title="ID not entered"
+          required=""
+          class=""
+        />
+        <div class="login-form-error"></div>
+      </div>
+      <div class="login-form">
+        <label for="pin">PIN</label>
+        <input
+          id="pin"
+          name="pin"
+          type="password"
+          placeholder="Employee PIN"
+          title="PIN not entered"
+          required=""
+          class=""
+        />
+        <div class="login-form-error"></div>
+      </div>
+
+      <input type="hidden" name="redirect" value="" />
+      <div class="login-form-submit-row">
+        <button type="submit" class="login-button">
+          Log In
+          <span class="LoadingSpinner s-hidden"></span>
+        </button>
+      </div>
+    </form>
+  </body>
+</html>
