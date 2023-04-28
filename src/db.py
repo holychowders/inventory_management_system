@@ -45,7 +45,10 @@ def ensure_db() -> None:
         # Connecting creates the database file if it doesn't exist.
         with sqlite3.connect(DB_PATH) as db:
             logging.info("Database file created: %s", DB_PATH)
-            with open(SQL_PATH / "create_tables.sql", encoding="utf-8") as script:
+
+            create_tables_sql_path = SQL_PATH / "create_tables.sql"
+            logging.info("Creating tables with %s", create_tables_sql_path)
+            with open(create_tables_sql_path, encoding="utf-8") as script:
                 db.executescript(script.read())
                 db.commit()
                 logging.info("Created tables")
