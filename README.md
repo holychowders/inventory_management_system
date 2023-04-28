@@ -25,6 +25,7 @@ Note: All devs must handle their warnings before merging into `main` or the remo
 ### Hooks Configured
 
 pre-commit has been configured with the following tools:
+- prettier: Is set up to format HTML and CSS.
 - sqlfluff: Formats and lints SQL code.
   - This tool works a little strangely, in that it will try to enforce consistency with the first use of a construct. For example, if the first identifier you name is lowercase, it will complain when you use a different convention for future identifiers in the same SQL file.
   - **NOTE!** An important quirk to note is that trailing commas will cause a parsing error. This is silly and easy to do, so beware of where you're putting your commas. If you see `[1 templating/parsing errors found]` and you know your SQL is valid, this may be the issue.
