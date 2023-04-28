@@ -1,10 +1,8 @@
 import logging
 import sqlite3
-from pathlib import Path
+from pprint import pformat
 
-CWD = Path.cwd()
-DB_PATH = CWD / "ims.db"
-SQL_PATH = CWD / "sql/"
+from db import DB_PATH, SQL_PATH, all_products
 
 
 def main() -> None:
@@ -30,6 +28,8 @@ def main() -> None:
                     db.executescript(script.read())
                     db.commit()
             logging.info("Populated database")
+
+    logging.info("Products:\n%s", pformat(all_products()))
 
 
 if __name__ == "__main__":
