@@ -1,4 +1,5 @@
-﻿import sqlite3
+﻿import logging
+import sqlite3
 from pathlib import Path
 
 CWD = Path.cwd()
@@ -34,6 +35,29 @@ ProductEntry = tuple[int, str, str, int, float]
 #         self.description = entry[2]
 #         self.quantity_available = entry[3]
 #         self.price = entry[4]
+
+
+def ensure_db() -> None:
+    if DB_PATH.exists():
+        logging.info("Database file found: %s", DB_PATH)
+    else:
+        logging.warning("Database file not found. Creating %s", DB_PATH)
+        # Connecting creates the database file if it doesn't exist.
+        with sqlite3.connect(DB_PATH) as db:
+            logging.info("Database file created: %s", DB_PATH)
+            with open(SQL_PATH / "create_tables.sql", encoding="utf-8") as script:
+                db.executescript(script.read())
+                db.commit()
+                logging.info("Created tables")
+
+            logging.info("Populating database")
+            population_script_paths = SQL_PATH.glob("populate_sample_data/*")
+            for script_path in population_script_paths:
+                logging.info("Populating database with %s", script_path)
+                with open(script_path, encoding="utf-8") as script:
+                    db.executescript(script.read())
+                    db.commit()
+            logging.info("Populated database")
 
 
 def all_products() -> list[ProductEntry]:
