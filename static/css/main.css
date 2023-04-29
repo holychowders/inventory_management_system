@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.login-form {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.login-button {
+  background: #c95018;
+  border-radius: 40px;
+  border: none;
+  color: #fff;
+  display: block;
+  font-weight: 400;
+  line-height: 1.25;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
