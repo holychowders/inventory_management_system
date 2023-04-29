@@ -20,6 +20,11 @@ def index() -> str:
     return render_template("index.html")
 
 
+@flask_app.route("/dashboard")  # noqa: vulture
+def dashboard() -> str:
+    return render_template("dashboard.html")
+
+
 if __name__ == "__main__":
     logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
     main()

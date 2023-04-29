@@ -1,4 +1,7 @@
 * {
+  color: #fff;
+  background-color: #121212;
+  text-align: center;
   box-sizing: border-box;
 }
 
@@ -9,6 +12,8 @@
 }
 
 .login-button {
+  margin: auto;
+  margin-top: 10px;
   background: #c95018;
   border-radius: 40px;
   border: none;
@@ -20,4 +25,28 @@
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
+}
+.login-button:hover {
+  background: #d96028;
+}
+
+.dashboard-button {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #c95018;
+  border-radius: 40px;
+  border: none;
+  color: #fff;
+  display: block;
+  font-weight: 400;
+  line-height: 1.25;
+  padding: 10px 40px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.dashboard-button:hover {
+  background: #d96028;
 }
