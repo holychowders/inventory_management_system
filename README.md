@@ -3,14 +3,14 @@
 - **University**: University of North Dakota
 - **Course**: CSCI 455: Database Management Systems
 - **Semester**: Spring 2023
-- **Project**: Inventory management system
+- **Project**: Inventory Management System
 - **Group Members**: Daniel De Jesus, Alycia Sloan, Austin Garcia
 
 ## Static Code Analysis with pre-commit
 
 ### Running Locally
 
-pre-commit can be run locally during development to automate formatting, detection of errors and bugs, and to enforce general code quality standards. If you decide to install the pre-commit hooks in your local repo, it will run every time you attempt to commit. If a check fails, you will have to resolve any warnings emitted or commit with `--no-verify` to ignore them.
+pre-commit can be run locally during development to automate formatting, detection of errors and bugs, and to enforce general code quality standards. If you decide to install the pre-commit hooks in your local repo, it will run every time you attempt to commit. If a check fails, you will have to resolve any warnings emitted or commit with `--no-verify` or `-n` to ignore them.
 
 pre-commit can also be run manually even if you haven't installed the hooks into your local repo.
 
@@ -25,15 +25,18 @@ Note: All devs must handle their warnings before merging into `main` or the remo
 ### Hooks Configured
 
 pre-commit has been configured with the following tools:
-- pyupgrade: Upgrades syntax to a specified version
+- sqlfluff: Formats and lints SQL code.
+  - This tool works a little strangely, in that it will try to enforce consistency with the first use of a construct. For example, if the first identifier you name is lowercase, it will complain when you use a different convention for future identifiers in the same SQL file.
+  - **NOTE!** An important quirk to note is that trailing commas will cause a parsing error. This is silly and easy to do, so beware of where you're putting your commas. If you see `[1 templating/parsing errors found]` and you know your SQL is valid, this may be the issue.
+- pyupgrade: Upgrades syntax to a specified version.
   - As one example, for specified version >= 3.10, `def thing(): -> List[int]:` becomes `def thing() -> list[int]:`, allowing the builtin `list` to be used for annotations instead of importing `from typing import List`.
-  - It is currently specified to python version 3.11
-- autoflake: Removes unused imports and variables
-- isort: Sorts imports alphabetically by import type
+  - It is currently specified to python version 3.11.
+- autoflake: Removes unused imports and variables.
+- isort: Sorts imports alphabetically by import type.
 - black: Formats code according to the PEP 8 standard. Will prevent the linters below from reporting nit-picky things, and save you from having to think about such nit-picky things.
 - vulture: Checks for dead code.
 - pylint: A proper static code analyzer.
-- mypy: Static type checking. Example warning: "Returning None from function declared to return str"
+- mypy: Static type checking. Example warning: "Returning None from function declared to return str".
 - flake8: Also performs static code analysis (this time with pyflakes), checks compliance with the PEP 8 style guide (using pycodestyle), performs complexity analysis (with McCabe).
   - The `flake8-bugbear` plugin is also being used with flake8 for semantic analysis.
 - The vanilla hooks for checking miscellaneous things like yaml, toml, and trailing whitespace.
@@ -55,7 +58,7 @@ For smaller changes, just commit normally, resolving any warnings that come up. 
 If the hooks were installed in your repo (`pre-commit install`), pre-commit will run automatically when you run `git commit`.
 
 - If warnings are emitted, you will have to resolve them before you attempt to commit again.
-- To bypass this (for example, if you want to save all changes and/or warnings for a dedicated commit before you push), you can add the `--no-verify` flag to your `git commit` command.
+- To bypass this (for example, if you want to save all changes and/or warnings for a dedicated commit before you push), you can add the `--no-verify` or `-n` flag to your `git commit` command.
 
 Whether or not you installed the hooks into your repo, you can still run pre-commit whenever you like using the following commands:
 - `pre-commit` runs pre-commit only on **staged** changes.
