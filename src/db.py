@@ -50,8 +50,6 @@ def ensure_db() -> None:
             logging.info("Creating tables with %s", create_tables_sql_path)
             with open(create_tables_sql_path, encoding="utf-8") as script:
                 db.executescript(script.read())
-                # TODO: Remove commit() calls when using context manager.
-                db.commit()
                 logging.info("Created tables")
 
             logging.info("Populating database")
@@ -60,7 +58,6 @@ def ensure_db() -> None:
                 logging.info("Populating database with %s", script_path)
                 with open(script_path, encoding="utf-8") as script:
                     db.executescript(script.read())
-                    db.commit()
             logging.info("Populated database")
 
 
