@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Inventory Management System</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>Inventory Management System</h1>
+      <h2>Products</h2>
+    </div>
+
+    <div class="products-list">
+      <form class="product-search-form" action="/" method="POST">
+        <input class="submit" type="submit" value="Search" />
+        <input
+          class="search-entry"
+          type="text"
+          name="product"
+          placeholder="Search product"
+          value=""
+        />
+      </form>
+      <form class="product-addition-form" action="/" method="POST">
+        <input class="submit" type="submit" value="Add" />
+        <input
+          class="add-entry"
+          type="text"
+          name="product"
+          placeholder="Add product"
+          value=""
+        />
+      </form>
+      <table>
+        <tr>
+          <th>+/-</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+          <td>
+            <a href="/delete-product/{{ product.id }}">Delete</a>
+          </td>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.quantity_available }}</td>
+          <td>{{ product.price }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>

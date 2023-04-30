@@ -12,6 +12,8 @@ good-names=["db","id"]
 [tool.vulture]
 paths = ["src"]
 sort_by_size = true
+ignore_decorators = ["@flask_app.route"]
+min_confidence = 61
 
 [tool.mypy]
 strict = true

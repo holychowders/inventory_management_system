@@ -5,6 +5,28 @@
   box-sizing: border-box;
 }
 
+table,
+td,
+th {
+  border: 1px solid #aaa;
+  padding: 5px;
+}
+
+table {
+  margin: auto;
+  border-collapse: collapse;
+  width: 75%;
+}
+
+th {
+  height: 30px;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+}
+
 .login-form {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -26,6 +48,7 @@
   text-decoration: none;
   vertical-align: middle;
 }
+
 .login-button:hover {
   background: #d96028;
 }
@@ -47,6 +70,16 @@
   text-decoration: none;
   vertical-align: middle;
 }
+
 .dashboard-button:hover {
   background: #d96028;
+}
+
+.product-search-form {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.product-addition-form {
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
