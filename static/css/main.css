@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+input:focus {
+  outline: 0 solid #d96028;
+  /*caret-color: #d96028;*/
+}
+
 table,
 td,
 th {
@@ -82,4 +87,45 @@ td {
 .product-addition-form {
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.products-entry-column-edit-group {
+  position: relative;
+  display: inline-block;
+}
+
+.products-entry-column-edit-input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-color: #c95018;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.products-entry-column-edit-label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #121212;
+  color: #d96028;
+  border-radius: 50px;
+  position: absolute;
+  left: 25px;
+  top: -7px;
+  font-size: 11px;
+}
+.product-edit-submit-button {
+  margin: auto;
+  background: #c95018;
+  padding: 8px 40px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  display: block;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.product-edit-submit-button:hover {
+  background: #d96028;
 }

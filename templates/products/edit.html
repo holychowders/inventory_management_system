@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Edit - Inventory Management System</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>Inventory Management System</h1>
+      <h2>Products - Edit</h2>
+    </div>
+
+    <div class="products-list">
+      <table>
+        <tr>
+          <th>+/-</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+          {% if product.id == id %}
+
+          <td>
+            <button type="submit" class="product-edit-submit-button">
+              Submit
+            </button>
+          </td>
+
+          <td>{{ product.id }}</td>
+          <td>
+            <div class="products-entry-column-edit-group">
+              <label
+                class="products-entry-column-edit-label"
+                for="products-entry-column-edit-name"
+                >Name</label
+              >
+              <input
+                id="products-entry-column-edit-name"
+                class="products-entry-column-edit-input"
+                type="text"
+                name="name"
+                placeholder=""
+                value="{{ product.name }}"
+              />
+            </div>
+          </td>
+          <td>
+            <div class="products-entry-column-edit-group">
+              <label
+                class="products-entry-column-edit-label"
+                for="products-entry-column-edit-description"
+                >Description</label
+              >
+              <input
+                id="products-entry-column-edit-description"
+                class="products-entry-column-edit-input"
+                type="text"
+                name="name"
+                placeholder=""
+                value="{{ product.description }}"
+              />
+            </div>
+          </td>
+          <td>
+            <div class="products-entry-column-edit-group">
+              <label
+                class="products-entry-column-edit-label"
+                for="products-entry-column-edit-quantity-available"
+                >Quantity</label
+              >
+              <input
+                id="products-entry-column-edit-quantity-available"
+                class="products-entry-column-edit-input"
+                type="text"
+                name="name"
+                placeholder=""
+                value="{{ product.quantity_available }}"
+              />
+            </div>
+          </td>
+          <td>
+            <div class="products-entry-column-edit-group">
+              <label
+                class="products-entry-column-edit-label"
+                for="products-entry-column-edit-price"
+                >Price</label
+              >
+              <input
+                id="products-entry-column-edit-price"
+                class="products-entry-column-edit-input"
+                type="text"
+                name="name"
+                placeholder=""
+                value="{{ product.price }}"
+              />
+            </div>
+          </td>
+
+          {% else %}
+          <td></td>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.quantity_available }}</td>
+          <td>{{ product.price }}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>

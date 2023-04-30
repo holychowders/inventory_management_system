@@ -38,6 +38,12 @@ def delete_product(id: int) -> Response:  # pylint: disable=redefined-builtin
     return redirect("/products")  # type: ignore
 
 
+@flask_app.route("/products/edit/<int:id>")
+def edit_product_in_products_page(id: int) -> str:  # pylint: disable=redefined-builtin
+    products = (Product(product) for product in db.all_products())  # pylint: disable=redefined-outer-name
+    return render_template("products/edit.html", products=products, id=id)
+
+
 if __name__ == "__main__":
     logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
     main()
