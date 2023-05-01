@@ -3,6 +3,7 @@
   background-color: #121212;
   text-align: center;
   box-sizing: border-box;
+  font-family: "Roboto";
 }
 
 input:focus {
@@ -78,6 +79,12 @@ td {
 
 .dashboard-button:hover {
   background: #d96028;
+}
+
+.dashboard-return-button{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  float: left;
 }
 
 .product-search-form {
