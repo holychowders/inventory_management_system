@@ -118,6 +118,7 @@ td {
   top: -7px;
   font-size: 11px;
 }
+
 .product-edit-submit-button {
   margin: auto;
   background: #c95018;
@@ -133,4 +134,19 @@ td {
 }
 .product-edit-submit-button:hover {
   background: #d96028;
+}
+
+.product-edit-cancel-button {
+  margin: auto;
+  margin-top: 5px;
+  background: #402000;
+  padding: 8px 40px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  display: block;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
 }
