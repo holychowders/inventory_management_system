@@ -1,57 +1,44 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Employee Login - Inventory Management System</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/main.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto"
-    />
-  </head>
-  <body>
-    <h1>Inventory Management System</h1>
-    <h2>Employee Login</h2>
-    <form id="login-form" method="POST" action="/dashboard" novalidate="">
-      <div class="login-form">
-        <label for="employee-id">ID</label>
-        <input
-          id="employee-id"
-          name="employee-id"
-          type="text"
-          placeholder="Employee ID"
-          value=""
-          title="ID not entered"
-          required=""
-          class=""
-        />
-        <div class="login-form-error"></div>
-      </div>
-      <div class="login-form">
-        <label for="pin">PIN</label>
-        <input
-          id="pin"
-          name="pin"
-          type="password"
-          placeholder="Employee PIN"
-          title="PIN not entered"
-          required=""
-          class=""
-        />
-        <div class="login-form-error"></div>
-      </div>
+<!--FIXME: What is the formatter doing here!?-->
+{% extends 'base.html' %} {% block head %}
+<title>Employee Login - Inventory Management System</title>
+{% endblock %} {% block body %}
 
-      <input type="hidden" name="redirect" value="" />
-      <div class="login-form-submit-row">
-        <button type="submit" class="login-button">
-          Log In
-          <span class="LoadingSpinner s-hidden"></span>
-        </button>
-      </div>
-    </form>
-  </body>
-</html>
+<h2>Employee Login</h2>
+<form id="login-form" method="POST" action="/dashboard" novalidate="">
+  <div class="login-form">
+    <label for="employee-id">ID</label>
+    <input
+      id="employee-id"
+      name="employee-id"
+      type="text"
+      placeholder="Employee ID"
+      value=""
+      title="ID not entered"
+      required=""
+      class=""
+    />
+    <div class="login-form-error"></div>
+  </div>
+  <div class="login-form">
+    <label for="pin">PIN</label>
+    <input
+      id="pin"
+      name="pin"
+      type="password"
+      placeholder="Employee PIN"
+      title="PIN not entered"
+      required=""
+      class=""
+    />
+    <div class="login-form-error"></div>
+  </div>
+
+  <input type="hidden" name="redirect" value="" />
+  <div class="login-form-submit-row">
+    <button type="submit" class="login-button">
+      Log In
+      <span class="LoadingSpinner s-hidden"></span>
+    </button>
+  </div>
+</form>
+{% endblock %}
