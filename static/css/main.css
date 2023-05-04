@@ -27,13 +27,10 @@ table {
   border-collapse: collapse;
   width: 75%;
 }
-
 th {
   height: 30px;
 }
-
 td {
-  text-align: center;
   padding: 5px;
 }
 
@@ -43,9 +40,8 @@ td {
   line-height: 1.5;
 }
 
-.login-button {
+.button {
   margin: auto;
-  margin-top: 10px;
   background: #c95018;
   border-radius: 40px;
   border: none;
@@ -53,42 +49,28 @@ td {
   display: block;
   font-weight: 400;
   line-height: 1.25;
-  padding: 10px 20px;
-  text-align: center;
   text-decoration: none;
   vertical-align: middle;
 }
-
-.login-button:hover {
+.button.hover {
   background: #d96028;
+}
+
+.login-button {
+  margin-top: 10px;
+  padding: 10px 20px;
 }
 
 .dashboard-button {
-  margin-top: 15px;
-  margin-bottom: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  background: #c95018;
-  border-radius: 40px;
-  border: none;
-  color: #fff;
-  display: block;
-  font-weight: 400;
-  line-height: 1.25;
+  margin: 15px auto 0;
   padding: 10px 40px;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-}
-
-.dashboard-button:hover {
-  background: #d96028;
 }
 
 .product-search-form {
   margin-top: 5px;
   margin-bottom: 10px;
 }
+
 .product-addition-form {
   margin-top: 5px;
   margin-bottom: 10px;
@@ -98,7 +80,6 @@ td {
   position: relative;
   display: inline-block;
 }
-
 .products-entry-column-edit-input {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -120,33 +101,13 @@ td {
 }
 
 .product-edit-submit-button {
-  margin: auto;
-  background: #c95018;
   padding: 8px 40px;
   border-radius: 5px;
-  border: none;
-  color: #fff;
-  display: block;
-  font-weight: 400;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-}
-.product-edit-submit-button:hover {
-  background: #d96028;
 }
 
 .product-edit-cancel-button {
-  margin: auto;
   margin-top: 5px;
   background: #402000;
   padding: 8px 40px;
   border-radius: 5px;
-  border: none;
-  color: #fff;
-  display: block;
-  font-weight: 400;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
 }
