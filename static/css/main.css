@@ -62,10 +62,7 @@ td {
 }
 
 .dashboard-button {
-  margin-top: 15px;
-  margin-bottom: 0px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 15px auto 0;
   padding: 10px 40px;
 }
 
