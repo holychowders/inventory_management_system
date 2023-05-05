@@ -68,3 +68,8 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
       - id: check-toml
+      - id: requirements-txt-fixer
+      - id: check-merge-conflict
+        name: "check for merge conflict strings"
+      - id: no-commit-to-branch
+        name: "don't commit directly to main"
