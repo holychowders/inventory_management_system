@@ -4,7 +4,7 @@ fail_fast: false
 
 repos:
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "6fd1ced85fc139abd7f5ab4f3d78dab37592cd5e"
+    rev: "v3.0.0-alpha.9-for-vscode"
     hooks:
       - id: prettier
         # FIXME: Doesn't format toml and gitignore?
@@ -12,7 +12,7 @@ repos:
         types_or: [css, html, yaml, markdown]
 
   - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 2.0.7
+    rev: 2.1.0
     hooks:
       #-   id: sqlfluff-lint
       - id: sqlfluff-fix
