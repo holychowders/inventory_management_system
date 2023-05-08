@@ -25,7 +25,8 @@ Note: All devs must handle their warnings before merging into `main` or the remo
 ### Hooks Configured
 
 pre-commit has been configured with the following tools:
-- prettier: Is set up to format HTML and CSS.
+
+- prettier: Is set up to format HTML, CSS, Yaml, and Markdown.
 - sqlfluff: Formats and lints SQL code.
   - This tool works a little strangely, in that it will try to enforce consistency with the first use of a construct. For example, if the first identifier you name is lowercase, it will complain when you use a different convention for future identifiers in the same SQL file.
   - **NOTE!** An important quirk to note is that trailing commas will cause a parsing error. This is silly and easy to do, so beware of where you're putting your commas. If you see `[1 templating/parsing errors found]` and you know your SQL is valid, this may be the issue.
@@ -62,6 +63,7 @@ If the hooks were installed in your repo (`pre-commit install`), pre-commit will
 - To bypass this (for example, if you want to save all changes and/or warnings for a dedicated commit before you push), you can add the `--no-verify` or `-n` flag to your `git commit` command.
 
 Whether or not you installed the hooks into your repo, you can still run pre-commit whenever you like using the following commands:
+
 - `pre-commit` runs pre-commit only on **staged** changes.
 - `pre-commit run <hook_id>` runs only the specified hook (eg, `black`, `mypy`, etc) on staged changes.
   - Note: If you want to pass extra arguments to the tool, you'll have to install it separately. You shouldn't have to worry about conflicting with pre-commit in doing so as pre-commit runs in an isolated environment with its own binaries. The only thing I might suggest is that you ensure you're using the same version as specified in `.pre-commit-config.yaml` if you're getting unexpected results.

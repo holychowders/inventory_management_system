@@ -1,72 +1,75 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
-fail_fast: false
-
 repos:
--   repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "6fd1ced85fc139abd7f5ab4f3d78dab37592cd5e"
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v3.0.0-alpha.9-for-vscode"
     hooks:
-    -   id: prettier
-        types_or: [css, html]
+      - id: prettier
+        # FIXME: Doesn't format toml and gitignore?
+        # FIXME: Doesn't warn when failed to format
+        types_or: [css, html, yaml, markdown]
 
-
--   repo: https://github.com/sqlfluff/sqlfluff
-    rev: 2.0.7
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 2.1.0
     hooks:
-    #-   id: sqlfluff-lint
-    -   id: sqlfluff-fix
+      #-   id: sqlfluff-lint
+      - id: sqlfluff-fix
         always_run: false
 
--   repo: https://github.com/asottile/pyupgrade
+  - repo: https://github.com/asottile/pyupgrade
     rev: v3.3.2
     hooks:
-    -   id: pyupgrade
+      - id: pyupgrade
         args: [--py311]
 
--   repo: https://github.com/PyCQA/autoflake
+  - repo: https://github.com/PyCQA/autoflake
     rev: v2.1.1
     hooks:
-    -   id: autoflake
+      - id: autoflake
 
--   repo: https://github.com/pycqa/isort
+  - repo: https://github.com/pycqa/isort
     rev: 5.12.0
     hooks:
-    -   id: isort
+      - id: isort
 
--   repo: https://github.com/psf/black
+  - repo: https://github.com/psf/black
     rev: 23.3.0
     hooks:
-    -   id: black
+      - id: black
 
--   repo: https://github.com/jendrikseipp/vulture
+  - repo: https://github.com/jendrikseipp/vulture
     rev: v2.7
     hooks:
-    -   id: vulture
+      - id: vulture
 
--   repo: https://github.com/PyCQA/pylint
+  - repo: https://github.com/PyCQA/pylint
     rev: v3.0.0a6
     hooks:
-    -   id: pylint
+      - id: pylint
         additional_dependencies: [flask]
 
--   repo: https://github.com/pre-commit/mirrors-mypy
+  - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.2.0
     hooks:
-    -   id: mypy
+      - id: mypy
         additional_dependencies: [tokenize-rt==3.2.0, flask]
 
--   repo: https://github.com/pycqa/flake8
+  - repo: https://github.com/pycqa/flake8
     rev: 6.0.0
     hooks:
-    -   id: flake8
+      - id: flake8
         additional_dependencies: [flake8-bugbear]
-        fail_fast: true
 
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
-    -   id: check-toml
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-toml
+      - id: requirements-txt-fixer
+      - id: check-merge-conflict
+        name: "check for merge conflict strings"
+      - id: no-commit-to-branch
+        name: "don't commit directly to main"
