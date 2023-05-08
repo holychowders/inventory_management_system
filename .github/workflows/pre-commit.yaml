@@ -1,4 +1,5 @@
 name: pre-commit
+
 env:
   SKIP: no-commit-to-branch
 

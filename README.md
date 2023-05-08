@@ -6,7 +6,7 @@
 - **Project**: Inventory Management System
 - **Group Members**: Daniel De Jesus, Alycia Sloan, Austin Garcia
 
-## Static Code Analysis with pre-commit
+## Static Code Analysis with [pre-commit](https://pre-commit.com/)
 
 ### Running Locally
 
@@ -41,9 +41,17 @@ pre-commit has been configured with the following tools:
 - mypy: Static type checking. Example warning: "Returning None from function declared to return str".
 - flake8: Also performs static code analysis (this time with pyflakes), checks compliance with the PEP 8 style guide (using pycodestyle), performs complexity analysis (with McCabe).
   - The `flake8-bugbear` plugin is also being used with flake8 for semantic analysis.
-- The vanilla hooks for checking miscellaneous things like yaml, toml, and trailing whitespace.
+- Some of [pre-commit's own hooks](https://github.com/pre-commit/pre-commit-hooks#pre-commit-hooks):
+  - trailing-whitespace,
+  - end-of-file-fixer
+  - check-yaml
+  - check-added-large-files
+  - check-toml
+  - requirements-txt-fixer
+  - check-merge-conflict
+  - no-commit-to-branch (`main`/`master` by default)
 
-Some of these tools are already configured in `pyproject.toml` and `.flake8`. If anything pops up that annoys you, we can re-configure it.
+Some of these tools are already configured in `pyproject.toml` and `.flake8` (and elsewhere). If anything pops up that annoys you, we can re-configure it.
 
 ### Setup
 
