@@ -10,6 +10,15 @@ input:focus {
   outline: 0 solid #d96028;
   /*caret-color: #d96028;*/
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  /* Remove spinner from number input fields */
+  -moz-appearance: textfield;
+}
 
 a {
   text-decoration: none;
