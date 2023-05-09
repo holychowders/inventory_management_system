@@ -25,12 +25,12 @@ def dashboard() -> str:
 
 @flask_app.route("/products")
 def products() -> str:
-    products = (Product(product) for product in db.all_products())  # pylint: disable=redefined-outer-name
+    products = (Product(product) for product in db.all_products())
     return render_template("products.html", products=products)
 
 
 @flask_app.route("/delete-product/<int:id>")
-def delete_product(id: int) -> Response:  # pylint: disable=redefined-builtin
+def delete_product(id: int) -> Response:
     db.delete_product(id)
 
     # FIXME: This assumes that we are on the products page to begin with (refreshes).
@@ -39,8 +39,8 @@ def delete_product(id: int) -> Response:  # pylint: disable=redefined-builtin
 
 
 @flask_app.route("/products/edit/<int:id>")
-def edit_product_in_products_page(id: int) -> str:  # pylint: disable=redefined-builtin
-    products = (Product(product) for product in db.all_products())  # pylint: disable=redefined-outer-name
+def edit_product_in_products_page(id: int) -> str:
+    products = (Product(product) for product in db.all_products())
     return render_template("products/edit.html", products=products, id=id)
 
 

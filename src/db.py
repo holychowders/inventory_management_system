@@ -67,7 +67,7 @@ def all_products() -> list[ProductEntry]:
         return db.execute(query).fetchall()
 
 
-def delete_product(id: int) -> None:  # pylint: disable=redefined-builtin
+def delete_product(id: int) -> None:
     with sqlite3.connect(DB_PATH) as db:
         sql = f"DELETE FROM product WHERE id={id}"
         db.execute(sql)
