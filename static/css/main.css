@@ -52,7 +52,7 @@ td {
   text-decoration: none;
   vertical-align: middle;
 }
-.button.hover {
+.button:hover {
   background: #d96028;
 }
 
