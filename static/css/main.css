@@ -54,6 +54,7 @@ td {
 }
 .button:hover {
   background: #d96028;
+  cursor: pointer;
 }
 
 .login-button {
