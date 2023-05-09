@@ -1,6 +1,6 @@
 import logging
 
-from flask import Flask, Response, redirect, render_template
+from flask import Flask, Response, redirect, render_template, request
 
 import db
 from db import Product, ensure_db
@@ -42,6 +42,35 @@ def delete_product(id: int) -> Response:
 def edit_product_in_products_page(id: int) -> str:
     products = (Product(product) for product in db.all_products())
     return render_template("products/edit.html", products=products, id=id)
+
+
+@flask_app.route("/products/edit/submit", methods=["POST"])
+def submit_product_edit() -> Response:
+    id = request.form.get("id")
+    name = request.form.get("name")
+    description = request.form.get("description")
+    quantity = request.form.get("quantity_available")
+    price = request.form.get("price")
+
+    logging.info(
+        """
+    Submitted product edit...
+    id: %s
+    name: %s
+    description: %s
+    quantity: %s
+    price: %s""",
+        repr(id),
+        repr(name),
+        repr(description),
+        repr(quantity),
+        repr(price),
+    )
+
+    # TODO: validate
+    # TODO: update db
+
+    return redirect("/products")  # type: ignore
 
 
 if __name__ == "__main__":
