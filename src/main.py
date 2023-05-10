@@ -55,8 +55,7 @@ def submit_product_edit() -> Response | str:
     )
 
     logging.info(
-        """
-    Submitted product edit. Will validate:
+        """Submitted product edit. Will validate:
     id: %s
     name: %s
     description: %s
@@ -105,8 +104,7 @@ def submit_product_edit() -> Response | str:
         logging.info("Validated values")
 
     logging.info(
-        """
-    Validated and processed product edit submission data as:
+        """Validated and processed product edit submission data as:
     id: %s
     name: %s
     description: %s
