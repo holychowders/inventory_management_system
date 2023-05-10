@@ -120,6 +120,7 @@ def submit_product_edit() -> Response | str:
     )
 
     new_product = Product((id, name, description, quantity, price))
+    logging.info("New product: %s", new_product)
     db.update_product(new_product)
 
     return redirect("/products")  # type: ignore
