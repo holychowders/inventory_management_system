@@ -50,6 +50,7 @@ td {
 }
 
 .button {
+  font-size: 14px;
   margin: auto;
   background: #c95018;
   border-radius: 40px;
@@ -118,6 +119,6 @@ td {
 .product-edit-cancel-button {
   margin-top: 5px;
   background: #402000;
-  padding: 8px 40px;
+  padding: 6px 20px;
   border-radius: 5px;
 }
