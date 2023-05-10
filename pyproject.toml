@@ -8,6 +8,7 @@ disable = [
     "W0621", # (redefined-outer-name)
     "W0622", # (redefined-builtin)
     "R0903", # (too-few-public-methods)
+    "R1705", # (no-else-return)
 ]
 good-names=["db","id"]
 
