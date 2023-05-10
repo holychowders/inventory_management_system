@@ -1,14 +1,45 @@
 * {
   color: #fff;
   background-color: #121212;
-  text-align: center;
   box-sizing: border-box;
   font-family: "Roboto";
+}
+
+body {
+  text-align: center;
+  font-size: 14px;
 }
 
 input:focus {
   outline: 0 solid #d96028;
   /*caret-color: #d96028;*/
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  /* Remove spinner from number input fields */
+  -moz-appearance: textfield;
+  text-align: center;
+}
+
+textarea {
+  font-size: 14px;
+  overflow: hidden;
+  width: 250px;
+  height: 45px;
+  min-width: 250px;
+  min-height: 45px;
+  max-height: 150px;
+  max-width: 250px;
+  border-color: #c95018;
+  border-radius: 5px;
+  padding: 6px;
+}
+textarea:focus {
+  outline: 0 solid #d96028;
 }
 
 a {
@@ -78,6 +109,7 @@ td {
 }
 
 .products-entry-column-edit-group {
+  margin-top: 10px;
   position: relative;
   display: inline-block;
 }
@@ -100,15 +132,30 @@ td {
   top: -7px;
   font-size: 11px;
 }
+.products-entry-column-edit-label-description {
+  top: -17px;
+}
 
 .product-edit-submit-button {
+  margin-bottom: 5px;
   padding: 8px 40px;
   border-radius: 5px;
 }
 
 .product-edit-cancel-button {
-  margin-top: 5px;
+  display: inline;
+  margin-right: 2px;
+  margin-left: 2px;
   background: #402000;
-  padding: 8px 40px;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+.product-edit-reset-button {
+  display: inline;
+  margin-right: 2px;
+  margin-left: 2px;
+  background: #402000;
+  padding: 6px 10px;
   border-radius: 5px;
 }
