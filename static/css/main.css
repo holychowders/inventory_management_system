@@ -112,13 +112,25 @@ td {
 }
 
 .product-edit-submit-button {
+  margin-bottom: 5px;
   padding: 8px 40px;
   border-radius: 5px;
 }
 
 .product-edit-cancel-button {
-  margin-top: 5px;
+  display: inline;
+  margin-right: 2px;
+  margin-left: 2px;
   background: #402000;
-  padding: 6px 20px;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+.product-edit-reset-button {
+  display: inline;
+  margin-right: 2px;
+  margin-left: 2px;
+  background: #402000;
+  padding: 6px 10px;
   border-radius: 5px;
 }
