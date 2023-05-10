@@ -3,13 +3,13 @@ import logging
 from flask import Flask, Response, redirect, render_template, request
 
 import db
-from db import Product, ensure_db
+from db import Product
 
 flask_app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
 
 def main() -> None:
-    ensure_db()
+    db.ensure_db()
     flask_app.run(debug=True, host="0.0.0.0", port=80)
 
 
@@ -119,7 +119,8 @@ def submit_product_edit() -> Response | str:
         repr(price),
     )
 
-    # TODO: update db
+    new_product = Product((id, name, description, quantity, price))
+    db.update_product(new_product)
 
     return redirect("/products")  # type: ignore
 

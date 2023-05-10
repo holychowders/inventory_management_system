@@ -61,6 +61,21 @@ def ensure_db() -> None:
             logging.info("Populated database")
 
 
+def update_product(product: Product) -> None:
+    sql = f"""
+    UPDATE product SET
+    name='{product.name}',
+    description='{product.description}',
+    quantity_available={product.quantity_available},
+    price={product.price}
+    WHERE id={product.id}"""
+
+    logging.info("%s", sql)
+
+    with sqlite3.connect(DB_PATH) as db:
+        db.execute(sql)
+
+
 def all_products() -> list[ProductEntry]:
     query = "SELECT * FROM product ORDER BY price DESC"
     with sqlite3.connect(DB_PATH) as db:
