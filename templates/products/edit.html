@@ -60,20 +60,17 @@
         <td>
           <div class="products-entry-column-edit-group">
             <label
-              class="products-entry-column-edit-label"
+              class="products-entry-column-edit-label products-entry-column-edit-label-description"
               for="products-entry-column-edit-description"
-              >Description (optional)</label
+              >Description (optional, line breaks ignored)</label
             >
-            <input
+            <textarea
               id="products-entry-column-edit-description"
-              class="products-entry-column-edit-input"
               name="description"
-              placeholder=""
-              type="text"
-              title="No leading or trailing whitespace"
-              pattern="^[^\s].+[^\s]$"
-              value="{{ product.description }}"
-            />
+              title="Line breaks ignored"
+            >
+{{ product.description }}</textarea
+            >
           </div>
         </td>
         <td>
