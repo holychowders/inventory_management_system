@@ -43,3 +43,11 @@ CREATE TABLE customer (
     phone TEXT NOT NULL,
     FOREIGN KEY (address_id) REFERENCES address (id)
 );
+
+CREATE TABLE inventory (
+    id INTEGER PRIMARY KEY,
+    supplier_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    FOREIGN KEY (supplier_id) REFERENCES supplier (id),
+    FOREIGN KEY (product_id) REFERENCES product (id)
+);
