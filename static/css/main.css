@@ -44,21 +44,6 @@ textarea:focus {
   outline: 0 solid #d96028;
 }
 
-.label {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: #121212;
-  color: #d96028;
-  border-radius: 50px;
-  left: 25px;
-  top: -7px;
-  font-size: 11px;
-}
-.product-edit-field-label,
-.product-description-textarea-label {
-  position: absolute;
-}
-
 a {
   text-decoration: none;
 }
@@ -73,6 +58,21 @@ th {
 table {
   margin: auto;
   border-collapse: collapse;
+}
+
+.label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #121212;
+  color: #d96028;
+  border-radius: 50px;
+  left: 25px;
+  top: -7px;
+  font-size: 11px;
+}
+.product-edit-field-label,
+.product-description-textarea-label {
+  position: absolute;
 }
 
 .login-field {
