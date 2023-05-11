@@ -123,12 +123,12 @@ td {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.product-addition-form-submit-button {
+.product-addition-submit-button {
   margin-bottom: 5px;
   padding: 5px 10px;
   border-radius: 5px;
 }
-.product-addition-form-clear-button {
+.product-addition-clear-button {
   background: #402000;
   padding: 4px 10px;
   border-radius: 5px;
