@@ -11,10 +11,15 @@ body {
   font-size: 14px;
 }
 
+input {
+  border-width: thin;
+}
 input:focus {
   outline: 0 solid #d96028;
+  border-width: medium;
   /*caret-color: #d96028;*/
 }
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -42,6 +47,7 @@ textarea {
 }
 textarea:focus {
   outline: 0 solid #d96028;
+  border-width: medium;
 }
 
 a {
