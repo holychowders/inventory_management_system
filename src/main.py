@@ -44,6 +44,78 @@ def edit_product_in_products_page(id: int) -> str:
     return render_template("products/edit.html", products=products, id=id)
 
 
+@flask_app.route("/products/add", methods=["POST"])
+def add_product() -> Response | str:
+    raw_name, raw_description, raw_quantity, raw_price = (
+        request.form.get("name"),
+        request.form.get("description"),
+        request.form.get("quantity_available"),
+        request.form.get("price"),
+    )
+
+    logging.info(
+        """Submitted product addition form. Will validate:
+    name: %s
+    description: %s
+    quantity: %s
+    price: %s""",
+        repr(raw_name),
+        repr(raw_description),
+        repr(raw_quantity),
+        repr(raw_price),
+    )
+
+    # Validate types
+    description = raw_description if raw_description else ""
+    try:
+        name = str(raw_name)
+        # FIXME: Numbers such as 5.0 should work
+        quantity = int(raw_quantity)  # type: ignore
+        price = float(raw_price)  # type: ignore
+    except TypeError:
+        # TODO: Improve this error message
+        error_msg = "One or more required fields were not provided"
+        logging.error(error_msg)
+        return error_msg
+    except ValueError as exception:
+        logging.error(str(exception))
+        return str(exception)
+    else:
+        logging.info("Validated types")
+
+    # Validate values
+    name = name.strip()
+    description = description.strip()
+    if not (quantity >= 0 and price >= 0):
+        error_msg = "quantity and/or price was less than 0"
+        logging.error(error_msg)
+        return error_msg
+    elif not name:
+        error_msg = "name must be provided"
+        logging.error(error_msg)
+        return error_msg
+    else:
+        logging.info("Validated values")
+
+    logging.info(
+        """Validated and processed product addition form as:
+    name: %s
+    description: %s
+    quantity: %s
+    price: %s""",
+        repr(name),
+        repr(description),
+        repr(quantity),
+        repr(price),
+    )
+
+    new_product = Product((None, name, description, quantity, price))
+    logging.info("New product: %s", new_product)
+    db.add_product(new_product)
+
+    return redirect("/products")  # type: ignore
+
+
 @flask_app.route("/products/edit/submit", methods=["POST"])
 def submit_product_edit() -> Response | str:
     raw_id, raw_name, raw_description, raw_quantity, raw_price = (
@@ -55,7 +127,7 @@ def submit_product_edit() -> Response | str:
     )
 
     logging.info(
-        """Submitted product edit. Will validate:
+        """Submitted product edit form. Will validate:
     id: %s
     name: %s
     description: %s
@@ -104,7 +176,7 @@ def submit_product_edit() -> Response | str:
         logging.info("Validated values")
 
     logging.info(
-        """Validated and processed product edit submission data as:
+        """Validated and processed product edit form data as:
     id: %s
     name: %s
     description: %s
@@ -117,9 +189,9 @@ def submit_product_edit() -> Response | str:
         repr(price),
     )
 
-    new_product = Product((id, name, description, quantity, price))
-    logging.info("New product: %s", new_product)
-    db.update_product(new_product)
+    updated_product = Product((id, name, description, quantity, price))
+    logging.info("Product with updates: %s", updated_product)
+    db.update_product(updated_product)
 
     return redirect("/products")  # type: ignore
 

@@ -8,7 +8,7 @@ DB_PATH = CWD / "ims.db"
 SQL_PATH = CWD / "sql/"
 
 
-ProductEntry = tuple[int, str, str, int, float]
+ProductEntry = tuple[int | None, str, str, int, float]
 
 
 @dataclass
@@ -23,7 +23,8 @@ class Product:
         print(product.id, product.name, product.description, ...)
     """
 
-    id: int
+    # Can be `None` if is a new product rather than updating an existing product
+    id: int | None
     name: str
     description: str
     quantity_available: int
@@ -61,7 +62,25 @@ def ensure_db() -> None:
             logging.info("Populated database")
 
 
+def add_product(product: Product) -> None:
+    if product.id is not None:
+        logging.warning("id should not be present adding new product. Is something wrong?")
+
+    sql = f"""
+    INSERT INTO product (name, description, quantity_available, price)
+    VALUES ('{product.name}', '{product.description}', {product.quantity_available}, {product.price})"""
+
+    logging.info("%s", sql)
+
+    with sqlite3.connect(DB_PATH) as db:
+        db.execute(sql)
+
+
 def update_product(product: Product) -> None:
+    if not product.id:
+        logging.error("Can't update product without id: %s", product)
+        return
+
     sql = f"""
     UPDATE product SET
     name='{product.name}',

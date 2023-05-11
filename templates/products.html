@@ -3,50 +3,120 @@
 {% endblock %} {% block body %}
 <h2>Products</h2>
 
-<div class="products-list">
-  <form class="product-search-form" action="/" method="POST">
-    <input class="submit" type="submit" value="Search" />
-    <input
-      class="search-entry"
-      type="text"
-      name="product"
-      placeholder="Search product"
-      value=""
-    />
-  </form>
-  <form class="product-addition-form" action="/" method="POST">
-    <input class="submit" type="submit" value="Add" />
-    <input
-      class="add-entry"
-      type="text"
-      name="product"
-      placeholder="Add product"
-      value=""
-    />
-  </form>
-  <table>
-    <tr>
-      <th>+/-</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Price</th>
-    </tr>
-    {% for product in products %}
-    <tr>
+<form class="product-search-form" action="/" method="POST">
+  <input class="submit" type="submit" value="Search" />
+  <input
+    class="search-entry"
+    type="text"
+    name="product"
+    placeholder="Search product"
+    value=""
+  />
+</form>
+
+<table>
+  <tr>
+    <th>+/-</th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+
+  <tr class="product-addition-form-table-row">
+    <form
+      method="POST"
+      class="product-addition-form"
+      action="{{ url_for('add_product') }}"
+    >
       <td>
-        <a href="/delete-product/{{ product.id }}">Delete</a>
-        /
-        <a href="/products/edit/{{ product.id }}">Edit</a>
+        <input
+          class="button product-addition-form-submit-button"
+          type="submit"
+          value="Add Product"
+        />
+
+        <input
+          class="button product-addition-form-clear-button"
+          type="reset"
+          value="Clear"
+        />
       </td>
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.description }}</td>
-      <td>{{ product.quantity_available }}</td>
-      <td>{{ product.price }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-</div>
+
+      <td></td>
+
+      <td>
+        <div class="products-entry-column-edit-group">
+          <input
+            class="product-addition-field"
+            name="name"
+            type="text"
+            required
+            title="No leading or trailing whitespace"
+            pattern="^[^\s].+[^\s]$"
+          />
+        </div>
+      </td>
+
+      <td>
+        <div class="products-entry-column-edit-group">
+          <label
+            class="label product-description-textarea-label"
+            for="products-addition-form-description"
+            >Optional, line breaks ignored</label
+          >
+          <textarea
+            id="products-addition-form-description"
+            name="description"
+            title="Line breaks ignored"
+          ></textarea>
+        </div>
+      </td>
+
+      <td>
+        <div class="products-entry-column-edit-group">
+          <input
+            class="product-addition-field"
+            name="quantity_available"
+            type="number"
+            required
+            title="No leading or trailing whitespace"
+            min="0"
+            step="1"
+          />
+        </div>
+      </td>
+
+      <td>
+        <div class="products-entry-column-edit-group">
+          <input
+            class="product-addition-field"
+            name="price"
+            type="number"
+            required
+            title="No leading or trailing whitespace"
+            min="0.0"
+            step="0.01"
+          />
+        </div>
+      </td>
+    </form>
+  </tr>
+
+  {% for product in products %}
+  <tr>
+    <td>
+      <a href="/delete-product/{{ product.id }}">Delete</a>
+      /
+      <a href="/products/edit/{{ product.id }}">Edit</a>
+    </td>
+    <td>{{ product.id }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.description }}</td>
+    <td>{{ product.quantity_available }}</td>
+    <td>{{ product.price }}</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}
