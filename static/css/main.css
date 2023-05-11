@@ -23,6 +23,7 @@ input[type="number"] {
   /* Remove spinner from number input fields */
   -moz-appearance: textfield;
   text-align: center;
+  width: 70px;
 }
 
 textarea {
