@@ -150,24 +150,18 @@ td {
 
 .product-edit-submit-button {
   margin-bottom: 5px;
-  padding: 8px 40px;
+  padding: 6px 28px;
   border-radius: 5px;
 }
-
 .product-edit-cancel-button {
   display: inline;
-  margin-right: 2px;
-  margin-left: 2px;
   background: #402000;
-  padding: 6px 10px;
+  padding: 4px 5px;
   border-radius: 5px;
 }
-
 .product-edit-reset-button {
   display: inline;
-  margin-right: 2px;
-  margin-left: 2px;
   background: #402000;
-  padding: 6px 10px;
+  padding: 4px 5px;
   border-radius: 5px;
 }
