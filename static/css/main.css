@@ -3,6 +3,7 @@
   background-color: #121212;
   box-sizing: border-box;
   font-family: "Roboto";
+  line-height: 1.25;
 }
 
 body {
@@ -88,7 +89,6 @@ table {
   color: #fff;
   display: block;
   font-weight: 400;
-  line-height: 1.25;
   text-decoration: none;
   vertical-align: middle;
 }
