@@ -73,12 +73,6 @@ table {
   margin: auto;
   border-collapse: collapse;
 }
-th {
-  height: 30px;
-}
-td {
-  padding: 5px;
-}
 
 .login-field {
   margin-top: 5px;
