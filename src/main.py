@@ -55,7 +55,7 @@ def submit_product_edit() -> Response | str:
     )
 
     logging.info(
-        """Submitted product edit. Will validate:
+        """Submitted product edit form. Will validate:
     id: %s
     name: %s
     description: %s
@@ -104,7 +104,7 @@ def submit_product_edit() -> Response | str:
         logging.info("Validated values")
 
     logging.info(
-        """Validated and processed product edit submission data as:
+        """Validated and processed product edit form data as:
     id: %s
     name: %s
     description: %s
@@ -117,9 +117,9 @@ def submit_product_edit() -> Response | str:
         repr(price),
     )
 
-    new_product = Product((id, name, description, quantity, price))
-    logging.info("New product: %s", new_product)
-    db.update_product(new_product)
+    updated_product = Product((id, name, description, quantity, price))
+    logging.info("Product with updates: %s", updated_product)
+    db.update_product(updated_product)
 
     return redirect("/products")  # type: ignore
 
