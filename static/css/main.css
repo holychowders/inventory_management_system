@@ -52,12 +52,9 @@ textarea:focus {
   top: -7px;
   font-size: 11px;
 }
-.products-entry-column-edit-label {
-  position: absolute;
-}
+.product-edit-field-label,
 .product-description-textarea-label {
   position: absolute;
-  top: -17px;
 }
 
 a {
@@ -83,7 +80,7 @@ td {
   padding: 5px;
 }
 
-.login-form-field {
+.login-field {
   margin-top: 5px;
   margin-bottom: 5px;
   line-height: 1.5;
@@ -136,7 +133,7 @@ td {
   border-radius: 5px;
 }
 
-.products-entry-column-edit-group {
+.product-edit-group {
   margin-top: 10px;
   position: relative;
   display: inline-block;

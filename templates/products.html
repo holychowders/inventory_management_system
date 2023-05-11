@@ -5,13 +5,7 @@
 
 <form class="product-search-form" action="/" method="POST">
   <input class="submit" type="submit" value="Search" />
-  <input
-    class="search-entry"
-    type="text"
-    name="product"
-    placeholder="Search product"
-    value=""
-  />
+  <input type="text" name="product" placeholder="Search product" />
 </form>
 
 <table>
@@ -24,7 +18,7 @@
     <th>Price</th>
   </tr>
 
-  <tr class="product-addition-form-table-row">
+  <tr class="product-addition-row">
     <form
       method="POST"
       class="product-addition-form"
@@ -47,7 +41,7 @@
       <td></td>
 
       <td>
-        <div class="products-entry-column-edit-group">
+        <div class="product-edit-group">
           <input
             class="product-addition-field"
             name="name"
@@ -60,13 +54,14 @@
       </td>
 
       <td>
-        <div class="products-entry-column-edit-group">
+        <div class="product-edit-group">
           <label
-            class="label product-description-textarea-label"
             for="products-addition-form-description"
+            class="label product-edit-label-field product-description-textarea-label"
             >Optional, line breaks ignored</label
           >
           <textarea
+            class="product-edit-field"
             id="products-addition-form-description"
             name="description"
             title="Line breaks ignored"
@@ -75,7 +70,7 @@
       </td>
 
       <td>
-        <div class="products-entry-column-edit-group">
+        <div class="product-edit-group">
           <input
             class="product-addition-field"
             name="quantity_available"
@@ -89,7 +84,7 @@
       </td>
 
       <td>
-        <div class="products-entry-column-edit-group">
+        <div class="product-edit-group">
           <input
             class="product-addition-field"
             name="price"
