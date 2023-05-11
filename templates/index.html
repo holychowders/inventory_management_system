@@ -4,41 +4,19 @@
 {% endblock %} {% block body %}
 
 <h2>Employee Login</h2>
-<form id="login-form" action="/dashboard" novalidate="">
-  <div class="login-form">
+<form id="login-form" action="/dashboard" novalidate>
+  <div class="login-form-field">
     <label for="employee-id">ID</label>
-    <input
-      id="employee-id"
-      name="employee-id"
-      type="text"
-      placeholder="Employee ID"
-      value=""
-      title="ID not entered"
-      required=""
-      class=""
-    />
-    <div class="login-form-error"></div>
-  </div>
-  <div class="login-form">
-    <label for="employee-pin">PIN</label>
-    <input
-      id="employee-pin"
-      name="employee-pin"
-      type="password"
-      placeholder="Employee PIN"
-      title="PIN not entered"
-      required=""
-      class=""
-    />
-    <div class="login-form-error"></div>
+    <input id="employee-id" name="id" type="text" required />
   </div>
 
-  <input type="hidden" name="redirect" value="" />
-  <div class="login-form-submit-row">
-    <button type="submit" class="button login-button">
-      Log In
-      <span class="LoadingSpinner s-hidden"></span>
-    </button>
+  <div class="login-form-field">
+    <label for="employee-pin">PIN</label>
+    <input id="employee-pin" name="pin" type="password" required />
+  </div>
+
+  <div>
+    <button type="submit" class="button login-button">Log In</button>
   </div>
 </form>
 {% endblock %}
