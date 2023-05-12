@@ -73,7 +73,10 @@ class Customer:
     last_name: str
     address_id: int | None
     address: Address | None
-    phone: int
+    # FIXME: Not liking this. This struct is being used to represent data as it exists in the database (`int`) and is
+    #  trying to be used to represent data in different ways to the user (`str`).
+    #  These two requirements are being mixed.
+    phone: int | str
 
     def __init__(self, entry: CustomerEntry):
         self.id = entry[0]

@@ -13,6 +13,14 @@ def main() -> None:
     flask_app.run(debug=True, host="0.0.0.0", port=8000)
 
 
+# TODO: Understand how this works, its constraints, and try to simplify it
+def format_phone_number(phone_number: str) -> str:
+    # Borrowed from:
+    #   - "What's the best way to format a phone number in Python?"
+    #   - https://stackoverflow.com/a/7058216/13327811
+    return format(int(phone_number[:-1]), ",").replace(",", "-") + phone_number[-1]
+
+
 @flask_app.route("/")
 def index() -> str:
     return render_template("index.html")
@@ -28,6 +36,7 @@ def customers() -> str:
     customers = []
     for raw_customer in db.all_customers():
         customer = Customer(raw_customer)
+        customer.phone = format_phone_number(str(customer.phone))
 
         if customer.address_id:
             address = db.address(customer.address_id)
