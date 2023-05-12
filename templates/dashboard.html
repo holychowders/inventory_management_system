@@ -10,5 +10,8 @@
   <button type="submit" class="button dashboard-button">Purchases</button>
   <button type="submit" class="button dashboard-button">Customers</button>
   <button type="submit" class="button dashboard-button">Suppliers</button>
+  <form action="{{ url_for('logout')}}">
+    <button type="submit" class="button dashboard-button">Log Out</button>
+  </form>
 </div>
 {% endblock %}
