@@ -17,6 +17,7 @@ input {
 input:focus {
   outline: 0 solid #d96028;
   border-width: medium;
+  border-style: inset;
   /*caret-color: #d96028;*/
 }
 
@@ -35,18 +36,17 @@ input[type="number"] {
 textarea {
   font-size: 14px;
   overflow: hidden;
-  width: 250px;
-  height: 45px;
   min-width: 250px;
-  min-height: 45px;
-  max-height: 150px;
+  width: 250px;
   max-width: 250px;
+  max-height: 100px;
+  outline: 0 inset #c95018;
   border-color: #c95018;
+  border-style: inset;
   border-radius: 5px;
   padding: 6px;
 }
 textarea:focus {
-  outline: 0 solid #d96028;
   border-width: medium;
 }
 
