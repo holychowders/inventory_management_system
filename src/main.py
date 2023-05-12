@@ -10,7 +10,7 @@ flask_app = Flask(__name__, template_folder="../templates", static_folder="../st
 
 def main() -> None:
     db.ensure_db()
-    flask_app.run(debug=True, host="0.0.0.0", port=80)
+    flask_app.run(debug=True, host="0.0.0.0", port=8000)
 
 
 @flask_app.route("/")
