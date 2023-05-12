@@ -4,12 +4,17 @@
 {% endblock %} {% block body %}
 
 <h2>Employee Login</h2>
-<form id="login-form" action="/dashboard" novalidate="">
+<form
+  id="login-form"
+  action="{{ url_for('index')}}"
+  method="POST"
+  novalidate=""
+>
   <div class="login-form">
     <label for="employee-id">ID</label>
     <input
       id="employee-id"
-      name="employee-id"
+      name="username"
       type="text"
       placeholder="Employee ID"
       value=""
@@ -23,18 +28,14 @@
     <label for="employee-pin">PIN</label>
     <input
       id="employee-pin"
-      name="employee-pin"
+      name="pin"
       type="password"
       placeholder="Employee PIN"
       title="PIN not entered"
       required=""
       class=""
     />
-    <div class="login-form-error"></div>
-  </div>
-
-  <input type="hidden" name="redirect" value="" />
-  <div class="login-form-submit-row">
+    <div class="login-form-error">{{ error }}</div>
     <button type="submit" class="button login-button">
       Log In
       <span class="LoadingSpinner s-hidden"></span>
