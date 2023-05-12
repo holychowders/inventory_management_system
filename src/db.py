@@ -3,6 +3,8 @@ import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
 
+from flask_login import UserMixin
+
 CWD = Path.cwd()
 DB_PATH = CWD / "ims.db"
 SQL_PATH = CWD / "sql/"
@@ -35,6 +37,14 @@ class Product:
         self.description = entry[2]
         self.quantity_available = entry[3]
         self.price = entry[4]
+
+
+@dataclass
+class User(UserMixin):  # type: ignore
+    def __init__(self, id: int, username: str, pin: str):
+        self.id = id
+        self.username = username
+        self.pin = pin
 
 
 def ensure_db() -> None:
