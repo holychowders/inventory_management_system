@@ -3,7 +3,7 @@
 {% endblock %} {% block body %}
 <h2>Products - Edit</h2>
 
-<div class="products-list">
+<div class="product-list">
   <table>
     <tr>
       <th>+/-</th>
@@ -23,9 +23,9 @@
             Submit
           </button>
           <div class="product-edit-cancel-and-reset-button-group">
-            <a href="/products" class="button product-edit-cancel-button">
-              Cancel
-            </a>
+            <a href="/products" class="button product-edit-cancel-button"
+              >Cancel</a
+            >
             <button type="reset" class="button product-edit-reset-button">
               Reset
             </button>
@@ -38,14 +38,12 @@
         </td>
 
         <td>
-          <div class="products-entry-column-edit-group">
-            <label
-              class="label products-entry-column-edit-label"
-              for="products-entry-column-edit-name"
+          <div class="product-edit-group">
+            <label for="name-field" class="label product-edit-field-label"
               >Name</label
             >
             <input
-              id="products-entry-column-edit-name"
+              id="name-field"
               class="product-edit-field"
               name="name"
               placeholder=""
@@ -59,16 +57,19 @@
         </td>
 
         <td>
-          <div class="products-entry-column-edit-group">
+          <div class="product-edit-group">
             <label
-              class="label product-description-textarea-label products-entry-column-edit-label products-entry-column-edit-label-description"
-              for="products-entry-column-edit-description"
+              for="description-field"
+              class="label product-edit-field-label product-description-textarea-label"
               >Description (optional, line breaks ignored)</label
             >
             <textarea
-              id="products-entry-column-edit-description"
+              class="product-edit-field"
+              id="description-field"
               name="description"
               title="Line breaks ignored"
+              rows="1"
+              cols="33"
             >
 {{ product.description }}</textarea
             >
@@ -76,14 +77,12 @@
         </td>
 
         <td>
-          <div class="products-entry-column-edit-group">
-            <label
-              class="label products-entry-column-edit-label"
-              for="products-entry-column-edit-quantity-available"
+          <div class="product-edit-group">
+            <label for="quantity-field" class="label product-edit-field-label"
               >Quantity</label
             >
             <input
-              id="products-entry-column-edit-quantity-available"
+              id="quantity-field"
               class="product-edit-field"
               name="quantity_available"
               placeholder=""
@@ -98,14 +97,12 @@
         </td>
 
         <td>
-          <div class="products-entry-column-edit-group">
-            <label
-              class="label products-entry-column-edit-label"
-              for="products-entry-column-edit-price"
+          <div class="product-edit-group">
+            <label for="price-field" class="label product-edit-field-label"
               >Price</label
             >
             <input
-              id="products-entry-column-edit-price"
+              id="price-field"
               class="product-edit-field"
               name="price"
               placeholder=""
