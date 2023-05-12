@@ -3,7 +3,7 @@ import logging
 from flask import Flask, Response, redirect, render_template, request
 
 import db
-from db import Product
+from db import Address, Customer, Product
 
 flask_app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
@@ -21,6 +21,26 @@ def index() -> str:
 @flask_app.route("/dashboard")
 def dashboard() -> str:
     return render_template("dashboard.html")
+
+
+@flask_app.route("/customers")
+def customers() -> str:
+    customers = []
+    for raw_customer in db.all_customers():
+        customer = Customer(raw_customer)
+
+        if customer.address_id:
+            address = db.address(customer.address_id)
+            customer.address = Address(address) if address else None
+            customers.append(customer)
+
+    return render_template("customers.html", customers=customers)
+
+
+@flask_app.route("/delete-customer/<int:id>")
+def delete_customer(id: int) -> Response:
+    db.delete_customer(id)
+    return redirect("/customers")  # type: ignore
 
 
 @flask_app.route("/products")
