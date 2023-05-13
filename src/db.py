@@ -154,8 +154,11 @@ def delete_customer(id: int) -> None:
 
 def all_products() -> list[ProductEntry]:
     query = "SELECT * FROM product ORDER BY price DESC"
+    logging.info(query)
     with sqlite3.connect(DB_PATH) as db:
-        return db.execute(query).fetchall()
+        products = db.execute(query).fetchall()
+        logging.info("\n%s", pformat(products))
+        return products
 
 
 def add_product(product: Product) -> None:
@@ -194,4 +197,5 @@ def update_product(product: Product) -> None:
 def delete_product(id: int) -> None:
     with sqlite3.connect(DB_PATH) as db:
         sql = f"DELETE FROM product WHERE id={id}"
+        logging.info(sql)
         db.execute(sql)
