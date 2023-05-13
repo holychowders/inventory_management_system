@@ -44,6 +44,12 @@ CREATE TABLE customer (
     FOREIGN KEY (address_id) REFERENCES address (id)
 );
 
+CREATE TABLE login_credentials (
+    id INTEGER PRIMARY KEY,
+    username TEXT NOT NULL UNIQUE,
+    pin TEXT NOT NULL
+);
+
 CREATE TABLE inventory (
     id INTEGER PRIMARY KEY,
     supplier_id INTEGER NOT NULL,

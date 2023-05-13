@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from pprint import pformat
 
+from flask_login import UserMixin
+
 CWD = Path.cwd()
 DB_PATH = CWD / "ims.db"
 SQL_PATH = CWD / "sql/"
@@ -12,6 +14,14 @@ SQL_PATH = CWD / "sql/"
 ProductEntry = tuple[int | None, str, str, int, float]
 CustomerEntry = tuple[int | None, str, str, int, int]
 AddressEntry = tuple[int | None, str, str, str, str, int]
+
+
+@dataclass
+class User(UserMixin):  # type: ignore
+    def __init__(self, id: int, username: str, pin: str):
+        self.id = id
+        self.username = username
+        self.pin = pin
 
 
 @dataclass
@@ -144,8 +154,11 @@ def delete_customer(id: int) -> None:
 
 def all_products() -> list[ProductEntry]:
     query = "SELECT * FROM product ORDER BY price DESC"
+    logging.info(query)
     with sqlite3.connect(DB_PATH) as db:
-        return db.execute(query).fetchall()
+        products = db.execute(query).fetchall()
+        logging.info("\n%s", pformat(products))
+        return products
 
 
 def add_product(product: Product) -> None:
@@ -184,4 +197,5 @@ def update_product(product: Product) -> None:
 def delete_product(id: int) -> None:
     with sqlite3.connect(DB_PATH) as db:
         sql = f"DELETE FROM product WHERE id={id}"
+        logging.info(sql)
         db.execute(sql)

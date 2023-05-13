@@ -49,7 +49,7 @@ repos:
     rev: v3.0.0a6
     hooks:
       - id: pylint
-        additional_dependencies: [flask]
+        additional_dependencies: [flask, flask-login]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.2.0

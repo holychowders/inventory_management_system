@@ -4,13 +4,13 @@
 {% endblock %} {% block body %}
 
 <h2>Employee Login</h2>
-<form id="login-form" action="/dashboard" novalidate>
+<form id="login-form" method="POST" action="{{ url_for('index') }}" novalidate>
   <div>
-    <label for="employee-id" class="login-field-label">ID</label>
+    <label for="employee-id" class="login-field-label">Username</label>
     <input
       id="employee-id"
       class="login-field"
-      name="id"
+      name="username"
       type="text"
       required
     />
@@ -26,6 +26,8 @@
       required
     />
   </div>
+
+  <div class="login-form-error">{{ error }}</div>
 
   <div>
     <button type="submit" class="button login-button">Log In</button>
