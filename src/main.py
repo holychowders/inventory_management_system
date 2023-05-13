@@ -30,7 +30,7 @@ def format_phone_number(phone_number: str) -> str:
 
 @login_manager.user_loader  # type: ignore
 def load_user(user_id: str) -> UserMixin:
-    with sqlite3.connect("ims.db") as conn:
+    with sqlite3.connect(db.DB_PATH) as conn:
         cursor = conn.cursor()
         query = "SELECT id, username, pin FROM login_credentials WHERE id = ?"
         cursor.execute(query, (user_id,))
@@ -54,7 +54,7 @@ def index() -> Response | str:
         username = request.form["username"]
         pin = request.form["pin"]
 
-        with sqlite3.connect("ims.db") as conn:
+        with sqlite3.connect(db.DB_PATH) as conn:
             cursor = conn.cursor()
             query = "SELECT id, username, pin FROM login_credentials WHERE username = ? and pin = ?"
             cursor.execute(query, (username, pin))
