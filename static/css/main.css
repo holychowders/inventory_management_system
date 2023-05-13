@@ -1,14 +1,53 @@
 * {
   color: #fff;
   background-color: #121212;
-  text-align: center;
   box-sizing: border-box;
   font-family: "Roboto";
+  line-height: 1.25;
 }
 
+body {
+  text-align: center;
+  font-size: 14px;
+}
+
+input {
+  border-width: thin;
+}
 input:focus {
   outline: 0 solid #d96028;
+  border-width: medium;
+  border-style: inset;
   /*caret-color: #d96028;*/
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  /* Remove spinner from number input fields */
+  -moz-appearance: textfield;
+  text-align: center;
+  width: 70px;
+}
+
+textarea {
+  font-size: 14px;
+  overflow: hidden;
+  min-width: 250px;
+  width: 250px;
+  max-width: 250px;
+  max-height: 100px;
+  outline: 0 inset #c95018;
+  border-color: #c95018;
+  border-style: inset;
+  border-radius: 5px;
+  padding: 6px;
+}
+textarea:focus {
+  border-width: medium;
 }
 
 a {
@@ -25,16 +64,24 @@ th {
 table {
   margin: auto;
   border-collapse: collapse;
-  width: 75%;
-}
-th {
-  height: 30px;
-}
-td {
-  padding: 5px;
 }
 
-.login-form {
+.label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #121212;
+  color: #d96028;
+  border-radius: 50px;
+  left: 25px;
+  top: -7px;
+  font-size: 11px;
+}
+.product-edit-field-label,
+.product-description-textarea-label {
+  position: absolute;
+}
+
+.login-field {
   margin-top: 5px;
   margin-bottom: 5px;
   line-height: 1.5;
@@ -48,7 +95,6 @@ td {
   color: #fff;
   display: block;
   font-weight: 400;
-  line-height: 1.25;
   text-decoration: none;
   vertical-align: middle;
 }
@@ -69,19 +115,31 @@ td {
 
 .product-search-form {
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .product-addition-form {
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+.product-addition-submit-button {
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.product-addition-clear-button {
+  background: #402000;
+  padding: 4px 10px;
+  border-radius: 5px;
 }
 
-.products-entry-column-edit-group {
+.product-edit-group {
+  margin-top: 10px;
   position: relative;
   display: inline-block;
 }
-.products-entry-column-edit-input {
+.product-edit-field,
+.product-addition-field {
   margin-top: 10px;
   margin-bottom: 10px;
   border-color: #c95018;
@@ -89,26 +147,20 @@ td {
   padding: 6px;
 }
 
-.products-entry-column-edit-label {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: #121212;
-  color: #d96028;
-  border-radius: 50px;
-  position: absolute;
-  left: 25px;
-  top: -7px;
-  font-size: 11px;
-}
-
 .product-edit-submit-button {
-  padding: 8px 40px;
+  margin-bottom: 5px;
+  padding: 6px 28px;
   border-radius: 5px;
 }
-
 .product-edit-cancel-button {
-  margin-top: 5px;
+  display: inline;
   background: #402000;
-  padding: 8px 40px;
+  padding: 4px 5px;
+  border-radius: 5px;
+}
+.product-edit-reset-button {
+  display: inline;
+  background: #402000;
+  padding: 4px 5px;
   border-radius: 5px;
 }

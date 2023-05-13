@@ -8,14 +8,14 @@ VALUES (
 ),
 (
     '400 Collins Rd NE',
-    '',
+    NULL,
     'Cedar Rapids',
     'Iowa',
     '52498'
 ),
 (
     '1201 S 2nd St',
-    '',
+    NULL,
     'Milwaukee',
     'Wisconsin',
     '53204'
@@ -29,7 +29,7 @@ VALUES (
 ),
 (
     '9243 Lakewood Blvd',
-    '',
+    NULL,
     'Downey',
     'California',
     '90240'

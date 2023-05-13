@@ -49,3 +49,11 @@ CREATE TABLE login_credentials (
     username TEXT NOT NULL UNIQUE,
     pin TEXT NOT NULL
 );
+
+CREATE TABLE inventory (
+    id INTEGER PRIMARY KEY,
+    supplier_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    FOREIGN KEY (supplier_id) REFERENCES supplier (id),
+    FOREIGN KEY (product_id) REFERENCES product (id)
+);

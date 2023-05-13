@@ -1,3 +1,6 @@
 venv/
+.idea/
+
 .python-version
 ims.db
+todo.md

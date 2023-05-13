@@ -3,7 +3,7 @@
 {% endblock %} {% block body %}
 <h2>Products - Edit</h2>
 
-<div class="products-list">
+<div class="product-list">
   <table>
     <tr>
       <th>+/-</th>
@@ -17,86 +17,105 @@
     <tr>
       {% if product.id == id %}
 
-      <td>
-        <button type="submit" class="button product-edit-submit-button">
-          Submit
-        </button>
-        <form action="/products">
-          <button type="submit" class="button product-edit-cancel-button">
-            Cancel
+      <form method="post" action="{{ url_for('submit_product_edit') }}">
+        <td>
+          <button type="submit" class="button product-edit-submit-button">
+            Submit
           </button>
-        </form>
-      </td>
+          <div class="product-edit-cancel-and-reset-button-group">
+            <a href="/products" class="button product-edit-cancel-button"
+              >Cancel</a
+            >
+            <button type="reset" class="button product-edit-reset-button">
+              Reset
+            </button>
+          </div>
+        </td>
 
-      <td>{{ product.id }}</td>
-      <td>
-        <div class="products-entry-column-edit-group">
-          <label
-            class="products-entry-column-edit-label"
-            for="products-entry-column-edit-name"
-            >Name</label
-          >
-          <input
-            id="products-entry-column-edit-name"
-            class="products-entry-column-edit-input"
-            type="text"
-            name="name"
-            placeholder=""
-            value="{{ product.name }}"
-          />
-        </div>
-      </td>
-      <td>
-        <div class="products-entry-column-edit-group">
-          <label
-            class="products-entry-column-edit-label"
-            for="products-entry-column-edit-description"
-            >Description</label
-          >
-          <input
-            id="products-entry-column-edit-description"
-            class="products-entry-column-edit-input"
-            type="text"
-            name="name"
-            placeholder=""
-            value="{{ product.description }}"
-          />
-        </div>
-      </td>
-      <td>
-        <div class="products-entry-column-edit-group">
-          <label
-            class="products-entry-column-edit-label"
-            for="products-entry-column-edit-quantity-available"
-            >Quantity</label
-          >
-          <input
-            id="products-entry-column-edit-quantity-available"
-            class="products-entry-column-edit-input"
-            type="text"
-            name="name"
-            placeholder=""
-            value="{{ product.quantity_available }}"
-          />
-        </div>
-      </td>
-      <td>
-        <div class="products-entry-column-edit-group">
-          <label
-            class="products-entry-column-edit-label"
-            for="products-entry-column-edit-price"
-            >Price</label
-          >
-          <input
-            id="products-entry-column-edit-price"
-            class="products-entry-column-edit-input"
-            type="text"
-            name="name"
-            placeholder=""
-            value="{{ product.price }}"
-          />
-        </div>
-      </td>
+        <td>
+          {{ product.id }}
+          <input name="id" type="hidden" value="{{ product.id }}" />
+        </td>
+
+        <td>
+          <div class="product-edit-group">
+            <label for="name-field" class="label product-edit-field-label"
+              >Name</label
+            >
+            <input
+              id="name-field"
+              class="product-edit-field"
+              name="name"
+              placeholder=""
+              type="text"
+              title="No leading or trailing whitespace"
+              pattern="^[^\s].+[^\s]$"
+              required
+              value="{{ product.name }}"
+            />
+          </div>
+        </td>
+
+        <td>
+          <div class="product-edit-group">
+            <label
+              for="description-field"
+              class="label product-edit-field-label product-description-textarea-label"
+              >Description (optional, line breaks ignored)</label
+            >
+            <textarea
+              class="product-edit-field"
+              id="description-field"
+              name="description"
+              title="Line breaks ignored"
+              rows="1"
+              cols="33"
+            >
+{{ product.description }}</textarea
+            >
+          </div>
+        </td>
+
+        <td>
+          <div class="product-edit-group">
+            <label for="quantity-field" class="label product-edit-field-label"
+              >Quantity</label
+            >
+            <input
+              id="quantity-field"
+              class="product-edit-field"
+              name="quantity_available"
+              placeholder=""
+              type="number"
+              title="No leading or trailing whitespace"
+              required
+              min="0"
+              step="1"
+              value="{{ product.quantity_available }}"
+            />
+          </div>
+        </td>
+
+        <td>
+          <div class="product-edit-group">
+            <label for="price-field" class="label product-edit-field-label"
+              >Price</label
+            >
+            <input
+              id="price-field"
+              class="product-edit-field"
+              name="price"
+              placeholder=""
+              type="number"
+              title="No leading or trailing whitespace"
+              required
+              min="0.0"
+              step="0.01"
+              value="{{ product.price }}"
+            />
+          </div>
+        </td>
+      </form>
 
       {% else %}
       <td></td>

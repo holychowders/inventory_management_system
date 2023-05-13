@@ -4,42 +4,33 @@
 {% endblock %} {% block body %}
 
 <h2>Employee Login</h2>
-<form
-  id="login-form"
-  action="{{ url_for('index')}}"
-  method="POST"
-  novalidate=""
->
-  <div class="login-form">
-    <label for="employee-id">ID</label>
+<form id="login-form" method="POST" action="{{ url_for('index') }}" novalidate>
+  <div>
+    <label for="employee-id" class="login-field-label">ID</label>
     <input
       id="employee-id"
+      class="login-field"
       name="username"
       type="text"
-      placeholder="Employee ID"
-      value=""
-      title="ID not entered"
-      required=""
-      class=""
+      required
     />
-    <div class="login-form-error"></div>
   </div>
-  <div class="login-form">
-    <label for="employee-pin">PIN</label>
+
+  <div>
+    <label for="employee-pin" class="login-form-field-label">PIN</label>
     <input
       id="employee-pin"
+      class="login-field"
       name="pin"
       type="password"
-      placeholder="Employee PIN"
-      title="PIN not entered"
-      required=""
-      class=""
+      required
     />
-    <div class="login-form-error">{{ error }}</div>
-    <button type="submit" class="button login-button">
-      Log In
-      <span class="LoadingSpinner s-hidden"></span>
-    </button>
+  </div>
+
+  <div class="login-form-error">{{ error }}</div>
+
+  <div>
+    <button type="submit" class="button login-button">Log In</button>
   </div>
 </form>
 {% endblock %}
