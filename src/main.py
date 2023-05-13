@@ -8,6 +8,7 @@ import db
 from db import Address, Customer, Product, User
 
 flask_app = Flask(__name__, template_folder="../templates", static_folder="../static")
+# FIXME: Use this only for testing. Do not store secrets in source.
 flask_app.secret_key = "UND2023CSCI455"
 
 login_manager = LoginManager(flask_app)
