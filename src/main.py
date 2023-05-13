@@ -32,8 +32,11 @@ def format_phone_number(phone_number: str) -> str:
 def load_user(user_id: str) -> UserMixin:
     with sqlite3.connect(db.DB_PATH) as conn:
         cursor = conn.cursor()
-        query = "SELECT id, username, pin FROM login_credentials WHERE id = ?"
-        cursor.execute(query, (user_id,))
+        query = f"SELECT id, username, pin FROM login_credentials WHERE id={user_id}"
+
+        logging.info(query)
+
+        cursor.execute(query)
         result = cursor.fetchone()
 
         if result:
@@ -56,8 +59,11 @@ def index() -> Response | str:
 
         with sqlite3.connect(db.DB_PATH) as conn:
             cursor = conn.cursor()
-            query = "SELECT id, username, pin FROM login_credentials WHERE username = ? and pin = ?"
-            cursor.execute(query, (username, pin))
+            query = f"SELECT id, username, pin FROM login_credentials WHERE username='{username}' and pin={pin}"
+
+            logging.info(query)
+
+            cursor.execute(query)
             result = cursor.fetchone()
 
         if result:
