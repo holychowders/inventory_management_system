@@ -55,12 +55,7 @@ repos:
     rev: v1.2.0
     hooks:
       - id: mypy
-        additional_dependencies: [tokenize-rt==3.2.0, flask, flask-login]
-        args:
-          - "--ignore-missing-imports"
-          - "--explicit-package-bases"
-          - "--exclude"
-          - inventory_management_system\src
+        additional_dependencies: [tokenize-rt==3.2.0, flask]
 
   - repo: https://github.com/pycqa/flake8
     rev: 6.0.0
