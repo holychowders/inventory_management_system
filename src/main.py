@@ -2,7 +2,7 @@ import logging
 import sqlite3
 
 from flask import Flask, Response, redirect, render_template, request
-from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
+from flask_login import LoginManager, login_required, login_user, logout_user
 
 import db
 from db import Address, Customer, Product, User
@@ -29,7 +29,7 @@ def format_phone_number(phone_number: str) -> str:
 
 
 @login_manager.user_loader  # type: ignore
-def load_user(user_id: str) -> UserMixin:
+def load_user(user_id: str) -> User | None:
     with sqlite3.connect(db.DB_PATH) as conn:
         cursor = conn.cursor()
         query = f"SELECT id, username, pin FROM login_credentials WHERE id={user_id}"
