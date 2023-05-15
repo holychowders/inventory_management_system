@@ -19,10 +19,9 @@ To see all hooks configured, see [.pre-commit-config.yaml](.pre-commit-config.ya
 Decide which stages you want pre-commit to run at:
 
 - Manual (no stages): See [Usage](#usage)
-- pre-commit: `pre-commit install`
+- All stages specified in the config: `pre-commit install`
+- pre-commit: `pre-commit install --hook-type pre-commit`
 - pre-push: `pre-commit install --hook-type pre-push`
-- pre-merge-commit: `pre-commit install --hook-type pre-merge-commit`
-- Stages specified in the config: `pre-commit install --all`
 - For other stages, see [confining hooks to run at certain stages](https://pre-commit.com/#confining-hooks-to-run-at-certain-stages) (pre-commit.com)
 - To disable hooks for all stages: `pre-commit uninstall`
 
