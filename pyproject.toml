@@ -13,7 +13,7 @@ disable = [
 good-names=["db","id"]
 
 [tool.vulture]
-paths = ["src"]
+paths = ["run.py", "ims"]
 sort_by_size = true
 ignore_decorators = ["@flask_app.route"]
 min_confidence = 61

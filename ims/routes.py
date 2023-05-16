@@ -1,57 +1,23 @@
 import logging
 import sqlite3
 
-from flask import Flask, Response, redirect, render_template, request
-from flask_login import LoginManager, login_required, login_user, logout_user
+from flask import Blueprint, Response, redirect, render_template, request
+from flask_login import login_required, login_user, logout_user
 
-import db
-from db import Address, Customer, Product, User
+from . import db
+from .db import Address, Customer, Product, User
+from .utils import format_phone_number
 
-flask_app = Flask(__name__, template_folder="../templates", static_folder="../static")
-# FIXME: Use this only for testing. Do not store secrets in source.
-flask_app.secret_key = "UND2023CSCI455"
-
-login_manager = LoginManager(flask_app)
-login_manager.login_view = "index"
+blueprint = Blueprint("blueprint", __name__, template_folder="../templates", static_folder="../static")
 
 
-def main() -> None:
-    db.ensure_db()
-    flask_app.run(debug=True, host="0.0.0.0", port=8000)
-
-
-# TODO: Understand how this works, its constraints, and try to simplify it
-def format_phone_number(phone_number: str) -> str:
-    # Borrowed from:
-    #   - "What's the best way to format a phone number in Python?"
-    #   - https://stackoverflow.com/a/7058216/13327811
-    return format(int(phone_number[:-1]), ",").replace(",", "-") + phone_number[-1]
-
-
-@login_manager.user_loader  # type: ignore
-def load_user(user_id: str) -> User | None:
-    with sqlite3.connect(db.DB_PATH) as conn:
-        cursor = conn.cursor()
-        query = f"SELECT id, username, pin FROM login_credentials WHERE id={user_id}"
-
-        logging.info(query)
-
-        cursor.execute(query)
-        result = cursor.fetchone()
-
-        if result:
-            user = User(id=result[0], username=result[1], pin=result[2])
-            return user
-        return None
-
-
-@flask_app.route("/logout")
+@blueprint.route("/logout")
 def logout() -> Response:
     logout_user()
     return redirect("/")  # type: ignore
 
 
-@flask_app.route("/", methods=["GET", "POST"])
+@blueprint.route("/", methods=["GET", "POST"])
 def index() -> Response | str:
     if request.method == "POST":
         username = request.form["username"]
@@ -74,13 +40,13 @@ def index() -> Response | str:
     return render_template("index.html")
 
 
-@flask_app.route("/dashboard")
+@blueprint.route("/dashboard")
 @login_required  # type: ignore
 def dashboard() -> str:
     return render_template("dashboard.html")
 
 
-@flask_app.route("/customers")
+@blueprint.route("/customers")
 def customers() -> str:
     customers = []
     for raw_customer in db.all_customers():
@@ -95,20 +61,20 @@ def customers() -> str:
     return render_template("customers.html", customers=customers)
 
 
-@flask_app.route("/delete-customer/<int:id>")
+@blueprint.route("/delete-customer/<int:id>")
 def delete_customer(id: int) -> Response:
     db.delete_customer(id)
     return redirect("/customers")  # type: ignore
 
 
-@flask_app.route("/products")
+@blueprint.route("/products")
 @login_required  # type: ignore
 def products() -> str:
     products = (Product(product) for product in db.all_products())
     return render_template("products.html", products=products)
 
 
-@flask_app.route("/delete-product/<int:id>")
+@blueprint.route("/delete-product/<int:id>")
 @login_required  # type: ignore
 def delete_product(id: int) -> Response:
     db.delete_product(id)
@@ -118,14 +84,14 @@ def delete_product(id: int) -> Response:
     return redirect("/products")  # type: ignore
 
 
-@flask_app.route("/products/edit/<int:id>")
+@blueprint.route("/products/edit/<int:id>")
 @login_required  # type: ignore
 def edit_product_in_products_page(id: int) -> str:
     products = (Product(product) for product in db.all_products())
     return render_template("products/edit.html", products=products, id=id)
 
 
-@flask_app.route("/products/add", methods=["POST"])
+@blueprint.route("/products/add", methods=["POST"])
 def add_product() -> Response | str:
     raw_name, raw_description, raw_quantity, raw_price = (
         request.form.get("name"),
@@ -197,7 +163,7 @@ def add_product() -> Response | str:
     return redirect("/products")  # type: ignore
 
 
-@flask_app.route("/products/edit/submit", methods=["POST"])
+@blueprint.route("/products/edit/submit", methods=["POST"])
 def submit_product_edit() -> Response | str:
     raw_id, raw_name, raw_description, raw_quantity, raw_price = (
         request.form.get("id"),
@@ -275,8 +241,3 @@ def submit_product_edit() -> Response | str:
     db.update_product(updated_product)
 
     return redirect("/products")  # type: ignore
-
-
-if __name__ == "__main__":
-    logging.basicConfig(format="[%(levelname)s] %(filename)s %(funcName)s(): %(message)s", level=logging.INFO)
-    main()
