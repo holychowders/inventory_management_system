@@ -17,7 +17,10 @@
     <tr>
       {% if product.id == id %}
 
-      <form method="post" action="{{ url_for('submit_product_edit') }}">
+      <form
+        method="post"
+        action="{{ url_for('blueprint.submit_product_edit') }}"
+      >
         <td>
           <button type="submit" class="button product-edit-submit-button">
             Submit

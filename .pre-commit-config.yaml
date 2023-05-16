@@ -49,13 +49,13 @@ repos:
     rev: v3.0.0a6
     hooks:
       - id: pylint
-        additional_dependencies: [flask, flask-login]
+        additional_dependencies: [flask, flask-login, pytest]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.2.0
     hooks:
       - id: mypy
-        additional_dependencies: [tokenize-rt==3.2.0, flask]
+        additional_dependencies: [tokenize-rt==3.2.0, flask, pytest]
 
   - repo: https://github.com/pycqa/flake8
     rev: 6.0.0
@@ -76,3 +76,17 @@ repos:
         name: "check for merge conflict strings"
       - id: no-commit-to-branch
         name: "don't commit directly to main"
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        # At this point, we can afford to keep this at commit stage.
+        # However, we may at some point want to restrict auto-running
+        # this to either only push or exclusively in CI
+        stages: [commit, push]
+        entry: pytest
+        language: python
+        additional_dependencies: [pytest, flask, flask-login]
+        pass_filenames: false
+        always_run: true
