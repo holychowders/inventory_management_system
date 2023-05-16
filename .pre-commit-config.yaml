@@ -76,3 +76,17 @@ repos:
         name: "check for merge conflict strings"
       - id: no-commit-to-branch
         name: "don't commit directly to main"
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        # At this point, we can afford to keep this at commit stage.
+        # However, we may at some point want to restrict auto-running
+        # this to either only push or exclusively in CI
+        stages: [commit, push]
+        entry: pytest
+        language: python
+        additional_dependencies: [pytest, flask, flask-login]
+        pass_filenames: false
+        always_run: true
