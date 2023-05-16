@@ -41,6 +41,7 @@ textarea {
   max-width: 250px;
   max-height: 100px;
   outline: 0 inset #c95018;
+  border-width: thin;
   border-color: #c95018;
   border-style: inset;
   border-radius: 5px;
