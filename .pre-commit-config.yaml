@@ -19,17 +19,6 @@ repos:
       - id: sqlfluff-fix
         always_run: false
 
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.2
-    hooks:
-      - id: pyupgrade
-        args: [--py311]
-
-  - repo: https://github.com/PyCQA/autoflake
-    rev: v2.1.1
-    hooks:
-      - id: autoflake
-
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
     hooks:
@@ -40,28 +29,17 @@ repos:
     hooks:
       - id: black
 
-  - repo: https://github.com/jendrikseipp/vulture
-    rev: v2.7
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: "v0.0.267"
     hooks:
-      - id: vulture
-
-  - repo: https://github.com/PyCQA/pylint
-    rev: v3.0.0a6
-    hooks:
-      - id: pylint
-        additional_dependencies: [flask, flask-login, pytest]
+      - id: ruff
+        args: [--fix]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.2.0
     hooks:
       - id: mypy
         additional_dependencies: [tokenize-rt==3.2.0, flask, pytest]
-
-  - repo: https://github.com/pycqa/flake8
-    rev: 6.0.0
-    hooks:
-      - id: flake8
-        additional_dependencies: [flake8-bugbear]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0

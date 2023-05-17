@@ -14,7 +14,7 @@ blueprint = Blueprint("blueprint", __name__, template_folder="../templates", sta
 @blueprint.route("/logout")
 def logout() -> Response:
     logout_user()
-    return redirect("/")  # type: ignore
+    return redirect("/")  # type: ignore[return-value]
 
 
 @blueprint.route("/", methods=["GET", "POST"])
@@ -25,7 +25,10 @@ def index() -> Response | str:
 
         with sqlite3.connect(db.DB_PATH) as conn:
             cursor = conn.cursor()
-            query = f"SELECT id, username, pin FROM login_credentials WHERE username='{username}' and pin={pin}"
+            query = f"""SELECT id, username, pin
+            FROM login_credentials
+            WHERE username='{username}' and pin={pin}
+            """  # noqa: S608
 
             logging.info(query)
 
@@ -35,13 +38,13 @@ def index() -> Response | str:
         if result:
             user = User(id=result[0], username=result[1], pin=result[2])
             login_user(user)
-            return redirect("/dashboard")  # type: ignore
+            return redirect("/dashboard")  # type: ignore[return-value]
         return render_template("index.html", error="Invalid username or pin")
     return render_template("index.html")
 
 
 @blueprint.route("/dashboard")
-@login_required  # type: ignore
+@login_required  # type: ignore[misc]
 def dashboard() -> str:
     return render_template("dashboard.html")
 
@@ -64,28 +67,28 @@ def customers() -> str:
 @blueprint.route("/delete-customer/<int:id>")
 def delete_customer(id: int) -> Response:
     db.delete_customer(id)
-    return redirect("/customers")  # type: ignore
+    return redirect("/customers")  # type: ignore[return-value]
 
 
 @blueprint.route("/products")
-@login_required  # type: ignore
+@login_required  # type: ignore[misc]
 def products() -> str:
     products = (Product(product) for product in db.all_products())
     return render_template("products.html", products=products)
 
 
 @blueprint.route("/delete-product/<int:id>")
-@login_required  # type: ignore
+@login_required  # type: ignore[misc]
 def delete_product(id: int) -> Response:
     db.delete_product(id)
 
     # FIXME: This assumes that we are on the products page to begin with (refreshes).
     # Otherwise, we probably shouldn't be redirecting to it.
-    return redirect("/products")  # type: ignore
+    return redirect("/products")  # type: ignore[return-value]
 
 
 @blueprint.route("/products/edit/<int:id>")
-@login_required  # type: ignore
+@login_required  # type: ignore[misc]
 def edit_product_in_products_page(id: int) -> str:
     products = (Product(product) for product in db.all_products())
     return render_template("products/edit.html", products=products, id=id)
@@ -117,15 +120,15 @@ def add_product() -> Response | str:
     try:
         name = str(raw_name)
         # FIXME: Numbers such as 5.0 should work
-        quantity = int(raw_quantity)  # type: ignore
-        price = float(raw_price)  # type: ignore
+        quantity = int(raw_quantity)  # type: ignore[arg-type]
+        price = float(raw_price)  # type: ignore[arg-type]
     except TypeError:
         # TODO: Improve this error message
         error_msg = "One or more required fields were not provided"
-        logging.error(error_msg)
+        logging.exception(error_msg)
         return error_msg
     except ValueError as exception:
-        logging.error(str(exception))
+        logging.exception(msg=exception)
         return str(exception)
     else:
         logging.info("Validated types")
@@ -135,11 +138,11 @@ def add_product() -> Response | str:
     description = description.strip()
     if not (quantity >= 0 and price >= 0):
         error_msg = "quantity and/or price was less than 0"
-        logging.error(error_msg)
+        logging.exception(error_msg)
         return error_msg
     elif not name:
         error_msg = "name must be provided"
-        logging.error(error_msg)
+        logging.exception(error_msg)
         return error_msg
     else:
         logging.info("Validated values")
@@ -160,7 +163,7 @@ def add_product() -> Response | str:
     logging.info("New product: %s", new_product)
     db.add_product(new_product)
 
-    return redirect("/products")  # type: ignore
+    return redirect("/products")  # type: ignore[return-value]
 
 
 @blueprint.route("/products/edit/submit", methods=["POST"])
@@ -193,17 +196,17 @@ def submit_product_edit() -> Response | str:
     # Validate types
     description = raw_description if raw_description else ""
     try:
-        id = int(raw_id)  # type: ignore
+        id = int(raw_id)  # type: ignore[arg-type]
         name = str(raw_name)
         # FIXME: Numbers such as 5.0 should work
-        quantity = int(raw_quantity)  # type: ignore
-        price = float(raw_price)  # type: ignore
+        quantity = int(raw_quantity)  # type: ignore[arg-type]
+        price = float(raw_price)  # type: ignore[arg-type]
     except TypeError:
         error_msg = "One or more required fields were not provided"
-        logging.error(error_msg)
+        logging.exception(error_msg)
         return error_msg
     except ValueError as exception:
-        logging.error(str(exception))
+        logging.exception(msg=exception)
         return str(exception)
     else:
         logging.info("Validated types")
@@ -213,11 +216,11 @@ def submit_product_edit() -> Response | str:
     description = description.strip()
     if not (id >= 0 and quantity >= 0 and price >= 0):
         error_msg = "At least one of id, quantity, or price was less than 0"
-        logging.error(error_msg)
+        logging.exception(error_msg)
         return error_msg
     elif not name:
         error_msg = "name must be provided"
-        logging.error(error_msg)
+        logging.exception(error_msg)
         return error_msg
     else:
         logging.info("Validated values")
@@ -240,4 +243,4 @@ def submit_product_edit() -> Response | str:
     logging.info("Product with updates: %s", updated_product)
     db.update_product(updated_product)
 
-    return redirect("/products")  # type: ignore
+    return redirect("/products")  # type: ignore[return-value]
