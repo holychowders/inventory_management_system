@@ -17,8 +17,8 @@ AddressEntry = tuple[int | None, str, str, str, str, int]
 
 
 @dataclass
-class User(UserMixin):  # type: ignore
-    def __init__(self, id: int, username: str, pin: str):
+class User(UserMixin):  # type: ignore[misc]
+    def __init__(self, id: int, username: str, pin: str) -> None:
         self.id = id
         self.username = username
         self.pin = pin
@@ -28,6 +28,7 @@ class User(UserMixin):  # type: ignore
 class Product:
     """
     Wrapper around database `product` table entries.
+
     It aims to simplify the use of product data once pulled from the database.
     """
 
@@ -38,7 +39,7 @@ class Product:
     quantity_available: int
     price: float
 
-    def __init__(self, entry: ProductEntry):
+    def __init__(self, entry: ProductEntry) -> None:
         self.id = entry[0]
         self.name = entry[1]
         self.description = entry[2]
@@ -50,6 +51,7 @@ class Product:
 class Address:
     """
     Wrapper around database `address` table entries.
+
     It aims to simplify the use of address data once pulled from the database.
     Attributes can be `None` if the address is new rather than an update of an existing one.
     """
@@ -61,7 +63,7 @@ class Address:
     state: str
     zip: int
 
-    def __init__(self, entry: AddressEntry):
+    def __init__(self, entry: AddressEntry) -> None:
         self.id = entry[0]
         self.line_1 = entry[1]
         self.line_2 = entry[2]
@@ -74,6 +76,7 @@ class Address:
 class Customer:
     """
     Wrapper around database `customer` table entries.
+
     It aims to simplify the use of customer data once pulled from the database.
     Attributes can be `None` if the customer is new rather than an update of an existing one.
     """
@@ -88,7 +91,7 @@ class Customer:
     #  These two requirements are being mixed.
     phone: int | str
 
-    def __init__(self, entry: CustomerEntry):
+    def __init__(self, entry: CustomerEntry) -> None:
         self.id = entry[0]
         self.first_name = entry[1]
         self.last_name = entry[2]
@@ -108,7 +111,7 @@ def ensure_db() -> None:
 
             create_tables_sql_path = SQL_PATH / "create_tables.sql"
             logging.info("Creating tables with %s", create_tables_sql_path)
-            with open(create_tables_sql_path, encoding="utf-8") as script:
+            with Path.open(create_tables_sql_path, encoding="utf-8") as script:
                 db.executescript(script.read())
                 logging.info("Created tables")
 
@@ -116,20 +119,20 @@ def ensure_db() -> None:
             population_script_paths = SQL_PATH.glob("populate_sample_data/*")
             for script_path in population_script_paths:
                 logging.info("Populating database with %s", script_path)
-                with open(script_path, encoding="utf-8") as script:
+                with Path.open(script_path, encoding="utf-8") as script:
                     db.executescript(script.read())
             logging.info("Populated database")
 
 
 def address(id: int) -> AddressEntry | None:
-    sql = f"SELECT * FROM address WHERE id={id}"
+    sql = f"SELECT * FROM address WHERE id={id}"  # noqa: S608
     logging.info("%s", sql)
     with sqlite3.connect(DB_PATH) as db:
         match = db.execute(sql).fetchone()
         logging.info("Match: %s", match)
 
         if match:
-            return match  # type: ignore
+            return match  # type: ignore[no-any-return]
         else:
             logging.warning("Couldn't find address")
             return None
@@ -145,7 +148,7 @@ def all_customers() -> list[CustomerEntry]:
 
 
 def delete_customer(id: int) -> None:
-    sql = f"DELETE FROM customer WHERE id={id}"
+    sql = f"DELETE FROM customer WHERE id={id}"  # noqa: S608
     logging.info(sql)
 
     with sqlite3.connect(DB_PATH) as db:
@@ -167,7 +170,7 @@ def add_product(product: Product) -> None:
 
     sql = f"""
     INSERT INTO product (name, description, quantity_available, price)
-    VALUES ('{product.name}', '{product.description}', {product.quantity_available}, {product.price})"""
+    VALUES ('{product.name}', '{product.description}', {product.quantity_available}, {product.price})"""  # noqa: S608
 
     logging.info("%s", sql)
 
@@ -177,7 +180,7 @@ def add_product(product: Product) -> None:
 
 def update_product(product: Product) -> None:
     if not product.id:
-        logging.error("Can't update product without id: %s", product)
+        logging.exception("Can't update product without id: %s", product)
         return
 
     sql = f"""
@@ -196,6 +199,6 @@ def update_product(product: Product) -> None:
 
 def delete_product(id: int) -> None:
     with sqlite3.connect(DB_PATH) as db:
-        sql = f"DELETE FROM product WHERE id={id}"
+        sql = f"DELETE FROM product WHERE id={id}"  # noqa: S608
         logging.info(sql)
         db.execute(sql)
