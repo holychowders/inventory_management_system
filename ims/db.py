@@ -3,6 +3,7 @@ import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
 from pprint import pformat
+from typing import NewType
 
 from flask_login import UserMixin
 
@@ -11,9 +12,9 @@ DB_PATH = CWD / "ims.db"
 SQL_PATH = CWD / "sql/"
 
 
-ProductEntry = tuple[int | None, str, str, int, float]
-CustomerEntry = tuple[int | None, str, str, int, int]
-AddressEntry = tuple[int | None, str, str, str, str, int]
+ProductEntry = NewType("ProductEntry", tuple[int | None, str, str, int, float])
+CustomerEntry = NewType("CustomerEntry", tuple[int | None, str, str, int, int])
+AddressEntry = NewType("AddressEntry", tuple[int | None, str, str, str, str, int])
 
 
 @dataclass

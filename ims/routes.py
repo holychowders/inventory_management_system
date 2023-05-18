@@ -5,7 +5,7 @@ from flask import Blueprint, Response, redirect, render_template, request
 from flask_login import login_required, login_user, logout_user
 
 from . import db
-from .db import Address, Customer, Product, User
+from .db import Address, Customer, Product, ProductEntry, User
 from .utils import format_phone_number
 
 blueprint = Blueprint("blueprint", __name__, template_folder="../templates", static_folder="../static")
@@ -159,7 +159,7 @@ def add_product() -> Response | str:
         repr(price),
     )
 
-    new_product = Product((None, name, description, quantity, price))
+    new_product = Product(ProductEntry((None, name, description, quantity, price)))
     logging.info("New product: %s", new_product)
     db.add_product(new_product)
 
@@ -239,7 +239,7 @@ def submit_product_edit() -> Response | str:
         repr(price),
     )
 
-    updated_product = Product((id, name, description, quantity, price))
+    updated_product = Product(ProductEntry((id, name, description, quantity, price)))
     logging.info("Product with updates: %s", updated_product)
     db.update_product(updated_product)
 
