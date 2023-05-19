@@ -77,13 +77,11 @@ table {
 }
 
 .label {
-  margin-top: 10px;
-  margin-bottom: 10px;
   background-color: #121212;
   color: #d96028;
   border-radius: 50px;
   left: 25px;
-  top: -17px;
+  top: -7px;
   font-size: 11px;
 }
 .product-edit-field-label,
@@ -146,13 +144,11 @@ table {
 }
 
 .product-edit-group {
-  margin-top: 10px;
   position: relative;
   display: inline-block;
 }
 .product-edit-field,
 .product-addition-field {
-  margin-bottom: 10px;
   border-color: #c95018;
   border-radius: 5px;
   padding: 6px;
