@@ -48,6 +48,7 @@ textarea {
   min-width: 250px;
   width: 250px;
   max-width: 250px;
+  min-height: 4ch;
   max-height: 100px;
   outline: 0 inset #c95018;
   border-width: thin;
