@@ -20,6 +20,15 @@ input:focus {
   border-style: inset;
   /*caret-color: #d96028;*/
 }
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus {
+  border: none;
+}
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -92,7 +101,6 @@ table {
   margin: auto;
   background: #c95018;
   border-radius: 40px;
-  border: none;
   color: #fff;
   display: block;
   font-weight: 400;
