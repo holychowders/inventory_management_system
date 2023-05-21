@@ -112,6 +112,7 @@ table {
 }
 .secondary-button {
   font-size: 12px;
+  background: #402000;
 }
 
 .login-button {
@@ -139,7 +140,6 @@ table {
   border-radius: 5px;
 }
 .product-addition-clear-button {
-  background: #402000;
   padding: 4px 10px;
   border-radius: 5px;
 }
@@ -163,7 +163,6 @@ table {
 .product-edit-cancel-button,
 .product-edit-reset-button {
   padding: 4px 5px;
-  background: #402000;
   display: inline;
   border-radius: 5px;
 }
