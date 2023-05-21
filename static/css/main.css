@@ -80,7 +80,7 @@ table {
 .label {
   background-color: #121212;
   color: #d96028;
-  border-radius: 50px;
+  border-radius: 5px;
   left: 15px;
   top: -7px;
   font-size: 11px;
@@ -99,12 +99,12 @@ table {
 .button {
   margin: auto;
   background: #c95018;
-  border-radius: 40px;
   color: #fff;
   display: block;
   font-weight: 400;
   text-decoration: none;
   vertical-align: middle;
+  border-radius: 5px;
 }
 .button:hover {
   background: #d96028;
@@ -118,11 +118,13 @@ table {
 .login-button {
   margin-top: 10px;
   padding: 10px 20px;
+  border-radius: 40px;
 }
 
 .dashboard-button {
   margin: 15px auto 0;
   padding: 10px 40px;
+  border-radius: 40px;
 }
 
 .product-search-form {
@@ -137,11 +139,9 @@ table {
 .product-addition-submit-button {
   margin-bottom: 5px;
   padding: 5px 10px;
-  border-radius: 5px;
 }
 .product-addition-clear-button {
   padding: 4px 10px;
-  border-radius: 5px;
 }
 
 .product-edit-group {
@@ -158,11 +158,9 @@ table {
 .product-edit-submit-button {
   margin-bottom: 5px;
   padding: 5px 26px;
-  border-radius: 5px;
 }
 .product-edit-cancel-button,
 .product-edit-reset-button {
   padding: 4px 5px;
   display: inline;
-  border-radius: 5px;
 }
