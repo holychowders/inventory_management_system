@@ -4,10 +4,6 @@ line-length = 120
 # Rules to enable (see https://beta.ruff.rs/docs/rules/)
 select = ["ALL"]
 ignore = [
-    # FIXME: This should be enabled, but doesn't seem to work.
-    #   You can leave this disabled if isort is separately run.
-    "I001", # (Import block is un-sorted of un-formatted)
-
     "D100", # (Missing docstring in public module)
     "D101", # (Missing docstring in public class)
     "D103", # (Missing docstring in public function)
@@ -29,6 +25,9 @@ ignore = [
 "tests/**" = [
     "S101", # (Use of `assert` detected)
 ]
+
+[tool.isort]
+profile = "black"
 
 [tool.black]
 line_length = 120
