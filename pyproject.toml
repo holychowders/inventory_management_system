@@ -1,10 +1,8 @@
 [tool.ruff]
 target-version = "py311"
 line-length = 120
-
 # Rules to enable (see https://beta.ruff.rs/docs/rules/)
-select = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
-
+select = ["ALL"]
 ignore = [
     # FIXME: This should be enabled, but doesn't seem to work.
     #   You can leave this disabled if isort is separately run.
