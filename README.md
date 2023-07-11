@@ -6,6 +6,16 @@
 - **Project**: Inventory Management System
 - **Group Members**: Daniel De Jesus, Alycia Sloan, Austin Garcia
 
+## Set Up and Run
+
+- Clone the repo
+- Switch to the `dev` branch: `git switch dev`
+- Install runtime dependencies: `python -m pip install -r requirements.txt`
+- Start web server: `python run.py`
+- Open home page: Navigate to `localhost:5000` in your browser's URL bar (primarily developed for Firefox with secondary support for Chrome)
+- Log in using `admin` for username `0` for password
+- Play around
+
 ## Static Code Analysis with [pre-commit](https://pre-commit.com/)
 
 pre-commit is used to automate formatting, detection of errors and bugs, and to enforce general code quality standards. It is set up to run on the remote and can be configured to run locally. pre-commit on your branch must pass all checks before merging into `main`.
