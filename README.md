@@ -57,3 +57,10 @@ Depending on which stage(s) you enabled hooks for, pre-commit will run automatic
 - Run pre-commit on all files, whether or not changes were made: `pre-commit run --all-files`
 
 Handling failures: Any time a pre-commit run fails, the operation you attmpted will be cancelled. You must either resolve the failures or repeat the operation with `--no-verify` or `-n` to ignore them.
+
+## Screenshots
+
+![Login page](screenshots/1-login.png)
+![Login page](screenshots/2-dashboard.png)
+![Login page](screenshots/3-products.png)
+![Login page](screenshots/4-products-edit.png)
