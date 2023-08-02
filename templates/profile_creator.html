@@ -1,0 +1,151 @@
+<!--FIXME: What is the formatter doing here!?-->
+{% extends 'base.html' %} {% block head %}
+<title>Create A New Profile - Inventory Management System</title>
+{% endblock %} {% block body %}
+
+<h2>New Profile Creator</h2>
+<form id="new-profile-form">
+  <div>
+    <label for="first-name" class="login-field-label">First Name</label>
+    <input
+      id="first-name"
+      class="login-field"
+      name="first-name"
+      type="text"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="last-name" class="login-field-label">Last Name</label>
+    <input
+      id="last-name"
+      class="login-field"
+      name="last-name"
+      type="text"
+      required
+    />
+  </div>
+  <div>
+    <label for="email" class="login-field-label">Email</label>
+    <input id="email" class="login-field" name="email" type="text" required />
+  </div>
+  <div>
+    <label for="phone-number" class="login-field-label">Phone Number</label>
+    <input
+      id="phone-number"
+      class="login-field"
+      name="phone-number"
+      type="text"
+      required
+    />
+  </div>
+  <div>
+    <label for="street-address-1" class="login-field-label"
+      >Street Address Line 1</label
+    >
+    <input
+      id="street-address-1"
+      class="login-field"
+      name="street-address-1"
+      type="text"
+      required
+    />
+  </div>
+  <div>
+    <label for="street-address-2" class="login-field-label"
+      >Street Address Line 2</label
+    >
+    <input
+      id="street-address-2"
+      class="login-field"
+      name="street-address-2"
+      type="text"
+    />
+  </div>
+  <div>
+    <label for="city" class="login-field-label">City</label>
+    <input id="city" class="login-field" name="city" type="text" required />
+  </div>
+  <div>
+    <label for="state">State</label>
+    <select>
+      <option value="AL">AL</option>
+      <option value="AK">AK</option>
+      <option value="AR">AR</option>
+      <option value="AZ">AZ</option>
+      <option value="CA">CA</option>
+      <option value="CO">CO</option>
+      <option value="CT">CT</option>
+      <option value="DC">DC</option>
+      <option value="DE">DE</option>
+      <option value="FL">FL</option>
+      <option value="GA">GA</option>
+      <option value="HI">HI</option>
+      <option value="IA">IA</option>
+      <option value="ID">ID</option>
+      <option value="IL">IL</option>
+      <option value="IN">IN</option>
+      <option value="KS">KS</option>
+      <option value="KY">KY</option>
+      <option value="LA">LA</option>
+      <option value="MA">MA</option>
+      <option value="MD">MD</option>
+      <option value="ME">ME</option>
+      <option value="MI">MI</option>
+      <option value="MN">MN</option>
+      <option value="MO">MO</option>
+      <option value="MS">MS</option>
+      <option value="MT">MT</option>
+      <option value="NC">NC</option>
+      <option value="NE">NE</option>
+      <option value="NH">NH</option>
+      <option value="NJ">NJ</option>
+      <option value="NM">NM</option>
+      <option value="NV">NV</option>
+      <option value="NY">NY</option>
+      <option value="ND">ND</option>
+      <option value="OH">OH</option>
+      <option value="OK">OK</option>
+      <option value="OR">OR</option>
+      <option value="PA">PA</option>
+      <option value="RI">RI</option>
+      <option value="SC">SC</option>
+      <option value="SD">SD</option>
+      <option value="TN">TN</option>
+      <option value="TX">TX</option>
+      <option value="UT">UT</option>
+      <option value="VT">VT</option>
+      <option value="VA">VA</option>
+      <option value="WA">WA</option>
+      <option value="WI">WI</option>
+      <option value="WV">WV</option>
+      <option value="WY">WY</option>
+    </select>
+  </div>
+  <div>
+    <p>Account Type</p>
+    <input
+      id="account-type-supplier"
+      name="account-type"
+      type="radio"
+      value="Supplier"
+      required
+    />
+    <label for="supplier">Supplier</label><br />
+    <input
+      id="account-type-customer"
+      name="account-type"
+      type="radio"
+      value="Customer"
+      required
+    />
+    <label for="supplier">Customer</label><br />
+  </div>
+
+  <div>
+    <button type="submit" class="button login-button">Submit</button>
+  </div>
+</form>
+
+{% endblock %}

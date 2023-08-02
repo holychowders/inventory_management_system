@@ -43,6 +43,11 @@ def index() -> Response | str:
     return render_template("index.html")
 
 
+@blueprint.route("/profile_creator")
+def profile_creator() -> Response | str:
+    return render_template("profile_creator.html")
+
+
 @blueprint.route("/dashboard")
 @login_required  # type: ignore[misc]
 def dashboard() -> str:
