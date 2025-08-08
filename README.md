@@ -6,6 +6,12 @@
 - **Project**: Inventory Management System
 - **Group Members**: Daniel De Jesus, Alycia Sloan, Austin Garcia
 
+## Try with Docker
+
+If you have Docker installed, execute `docker run --rm -it --name ims -p 5000:5000 holychowders/ims` to download this project and have it run automatically for testing. Type `localhost:5000` into your browser's address bar and hit enter. You should now be able to interact with IMS.
+
+View the Docker Hub image [here](https://hub.docker.com/repository/docker/holychowders/ims)
+
 ## Set Up and Run
 
 - Clone the repo

@@ -8,11 +8,11 @@ from . import db, routes
 from .db import User
 
 
-def run() -> None:
+def run(host: str) -> None:
     logging.basicConfig(format="[%(levelname)s] %(filename)s %(funcName)s(): %(message)s", level=logging.INFO)
 
     db.ensure_db()
-    flask_app.run(debug=True, host="127.0.0.1")
+    flask_app.run(debug=True, host=host)
 
 
 def create_flask_app() -> Flask:
