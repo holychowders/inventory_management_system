@@ -1,10 +1,10 @@
 # Inventory Management System
 
-- **University**: University of North Dakota
-- **Course**: CSCI 455: Database Management Systems
-- **Semester**: Spring 2023
-- **Project**: Inventory Management System
-- **Group Members**: Daniel De Jesus, Alycia Sloan, Austin Garcia
+- University of North Dakota
+- CSCI 455: Database Management Systems
+- Spring 2023
+- Daniel De Jesus, Alycia Sloan, Austin Garcia
+- Stack: SQlite, Python, Flask, GitHub Actions/pre-commit, logging
 
 ## Try with Docker
 
